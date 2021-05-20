@@ -6,4 +6,8 @@ const getDashboard = require( __dirname + "/getDashboard.js");
 // 	constructor() 
 // }
 
-module.exports = getDashboard
+const handler = {
+    getDashboard : getDashboard
+};
+
+module.exports.routesHandler = handler
