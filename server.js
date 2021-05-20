@@ -1,6 +1,5 @@
 const express=require("express");
 const fileupload = require("express-fileupload");
-const bodyParser=require("body-parser");
 const ejs=require("ejs");
 const mongoose=require("mongoose");
 const session=require('express-session');
@@ -10,7 +9,7 @@ const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
 
 
 // mongoose.connect("mongodb://localhost:27017/", {
-// 							useNewUrlParser: true,  
+// 							useNewUrlParser: true,
 // 							useUnifiedTopology: true
 // 						}).then( () => console.log("connected to DB."))
 // 							.catch( err => console.log(err));;
