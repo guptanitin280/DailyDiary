@@ -1,4 +1,5 @@
 const express=require("express");
+const bodyParser=require("body-parser");
 const fileupload = require("express-fileupload");
 const ejs=require("ejs");
 const mongoose=require("mongoose");
@@ -8,18 +9,38 @@ const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
 
 
+const app = express();
+
+
+app.use(express.static("public"));
+app.set('view engine','ejs');
+app.use(fileupload());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+app.use(session({
+	secret: "Oh! that's secret",
+	resave: false,
+	saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+mongoose.connect("mongodb://localhost:27017/userDataBase", {
+							useNewUrlParser: true,
+							useUnifiedTopology: true
+						}).then( () => console.log("connected to DB."))
+							.catch( err => console.log(err));
+
+mongoose.set("useCreateIndex",true);
+
+
 const userSchema=new mongoose.Schema({
-	_id : {
+	username : {
 		type : String,
-		required : true
-	},
-	name : {
-		type : String,
-		required : true
-	},
-	email : {
-		type : String,
-		required : true
+		required : true,
+		unique : true
 	},
 	password : {
 		type : String,
@@ -118,25 +139,24 @@ const pageSchema=new mongoose.Schema({
 },{
 	timestamps : true
 });
-// mongoose.connect("mongodb://localhost:27017/", {
-// 							useNewUrlParser: true,
-// 							useUnifiedTopology: true
-// 						}).then( () => console.log("connected to DB."))
-// 							.catch( err => console.log(err));;
+
+userSchema.plugin(passportLocalMongoose);
+const User=new mongoose.model("User",userSchema);
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
-const app = express();
-
-
-app.use(fileupload());
-app.use(express.static("public"));
-app.set("view engine", "ejs");
 
 
 
 app.get("/", (req, res) => routesHandler.getDashboard(req,res));
-console.log(routesHandler)
-
+app.get("/login",function(req,res) { res.render("login"); });
+app.get("/register",function(req,res) { res.render("register");});
+app.post("/login",(req,res)=>routesHandler.login(req,res,User,passport));
+app.post("/register",(req,res)=>routesHandler.register(req,res,User,passport));
+app.get("/logout",(req,res)=>routesHandler.logout(req,res));
 app.listen(3000 , () => {
 	console.log("listening to port 3000")
 })
