@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0f9c1ee3-eaef-4edc-b8e2-1c55680468e4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/AllRoutesHandlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/AllRoutesHandlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/getDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/getDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/dashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/dashboard.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +33,13 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nitgu\Desktop\DailyDiary\views" />
+      <recent name="C:\Users\nitgu\Desktop\DailyDiary\routes" />
       <recent name="C:\Users\nitgu\Desktop\DailyDiary" />
     </key>
   </component>
@@ -54,7 +55,10 @@
       <workItem from="1621515258310" duration="3932000" />
       <workItem from="1621531014616" duration="1982000" />
       <workItem from="1621533272696" duration="2268000" />
-      <workItem from="1621535572319" duration="841000" />
+      <workItem from="1621535572319" duration="2056000" />
+      <workItem from="1621537972824" duration="219000" />
+      <workItem from="1621538198667" duration="168000" />
+      <workItem from="1621538381945" duration="74000" />
     </task>
     <servers />
   </component>

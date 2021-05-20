@@ -150,13 +150,13 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-
-app.get("/", (req, res) => routesHandler.getDashboard(req,res));
+app.get("/",function(req,res){ console.log("chutdfa"); res.render("home")});
+app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,User));
 app.get("/login",function(req,res) { res.render("login"); });
 app.get("/register",function(req,res) { res.render("register");});
 app.post("/login",(req,res)=>routesHandler.login(req,res,User,passport));
 app.post("/register",(req,res)=>routesHandler.register(req,res,User,passport));
 app.get("/logout",(req,res)=>routesHandler.logout(req,res));
-app.listen(3000 , () => {
-	console.log("listening to port 3000")
+app.listen(8000 , () => {
+	console.log("listening to port 8000")
 })
