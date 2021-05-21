@@ -79,6 +79,7 @@ async function generateDb() {
 		for(let j=0;j<10;j++) {
 			let page = new pageModel({
 				owner_id : newUser.id,
+				author_id : newUser.id,
 				content : "It's the page written by me baby, what else you need for content",
 				isPrivate : true,
 				likes : i + 19,
@@ -91,6 +92,7 @@ async function generateDb() {
 		for(let j=0;j<10;j++) {
 			let page = new pageModel({
 				owner_id : newUser.id,
+				author_id : newUser.id,
 				content : "It's the page written by me baby, what else you need for content",
 				isPrivate : false,
 				likes : i + 19,
