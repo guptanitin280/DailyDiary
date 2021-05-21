@@ -1,5 +1,5 @@
 
-const getDashboard = (req, res, User) =>
+const getDashboard = (req, res, userModel) =>
 {
 	let username;
 	if(req.isAuthenticated())
@@ -7,21 +7,14 @@ const getDashboard = (req, res, User) =>
 	else
 		res.redirect("/login");
 	console.log(username);
-	User.find({username:username},function(err,user)
-	{
-		if(err)
-		{
+	userModel.find({username:username},function(err,user){
+		if(err){
 			console.log(err);
-		}
-		else
-		{
-			if(user)
-			{
+		} else {
+			if(user){
 				res.render("dashboard",{username:username});
-			}
-			else
-			{
-				res.redirect("/login");
+			} else {
+				res.redirect("/");
 			}
 		}
 	});

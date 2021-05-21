@@ -7,7 +7,7 @@ const session=require('express-session');
 const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
-
+const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js")
 
 const app = express();
 
@@ -35,127 +35,26 @@ mongoose.connect("mongodb://localhost:27017/userDataBase", {
 
 mongoose.set("useCreateIndex",true);
 
+// const User = new userModel;
+passport.use(userModel.createStrategy());
 
-const userSchema=new mongoose.Schema({
-	username : {
-		type : String,
-		required : true,
-		unique : true
-	},
-	password : {
-		type : String,
-		required : true
-	},
-	img : {
-		data : Buffer,
-		contentType : String
-	},
-	favicon : {
-		data : Buffer,
-		contentType : String
-	},
-	bio : String,
-	friends : [{
-		_id : String,
-		name : String,
-		favicon : {
-			data : Buffer,
-			contentType : String
-		},
-		messages : [{
-			message: String,
-			timeOfArrival : Date,
-			isMe : Boolean,
-		}]
-	}],
-	following : [{
-		diary_id: String
-	}],
-	myDiaries : [{
-		diary_id: String
-	}],
-	access: [{
-		user_id : String,
-		startTime: Date,
-		endTime: Date,
-		isWrite: Boolean
-	}],
-	notifications: [{
-		notification: String,
-		arrivalTime: Date
-	}],
-});
-const diarySchema=new mongoose.Schema({
-	_id : {
-		type : String,
-		required : true
-	},
-	owner_id : {
-		type : String,
-		required : true
-	},
-	page_ids:[{
-		page_id: String
-	}],
-
-	followers : [{
-		user_id : String,
-		favicon : {
-			data : Buffer,
-			contentType : String
-		}
-	}],
-	numberOfFollowers: Number,
-	access: [{
-		user_id : String,
-		startTime: Date,
-		endTime: Date,
-		isWrite: Boolean
-	}],
-	isPrivate : Boolean
-});
-const pageSchema=new mongoose.Schema({
-	_id : {
-		type : String,
-		required : true
-	},
-	owner_id : {
-		type : String,
-		required : true
-	},
-	diary_id:String,
-	content : String,
-	isPrivate : Boolean,
-	likes : Number,
-	comments : [{
-		comment : String,
-		user_id : String,
-		time : Date,
-		favicon : {
-			data : Buffer,
-			contentType : String
-		},
-	}]
-},{
-	timestamps : true
+passport.serializeUser((user, done) => {
+	done(null , user.id)
 });
 
-userSchema.plugin(passportLocalMongoose);
-const User=new mongoose.model("User",userSchema);
-
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
+passport.deserializeUser((id, done) => {
+	userModel.findById(id).then(user => {
+		done(null, user)
+	})
+});
 
 
-
-app.get("/",function(req,res){ console.log("chutdfa"); res.render("home")});
-app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,User));
+app.get("/", (req,res) => res.render("home"));
+app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel));
 app.get("/login",function(req,res) { res.render("login"); });
 app.get("/register",function(req,res) { res.render("register");});
-app.post("/login",(req,res)=>routesHandler.login(req,res,User,passport));
-app.post("/register",(req,res)=>routesHandler.register(req,res,User,passport));
+app.post("/login",(req,res)=>routesHandler.login(req,res,userModel,passport));
+app.post("/register",(req,res)=>routesHandler.register(req,res,userModel,passport));
 app.get("/logout",(req,res)=>routesHandler.logout(req,res));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
