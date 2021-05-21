@@ -5,7 +5,7 @@ const postLogout = require(__dirname+"/postRoutes/postLogout.js");
 const getLogin = require(__dirname+"/getRoutes/getLogin.js");
 const getHome = require(__dirname+"/getRoutes/getHome.js");
 const getRegister = require(__dirname+"/getRoutes/getRegister.js");
-const compose = require(__dirname+"/getRoutes/compose.js");
+const getcompose = require(__dirname+"/getRoutes/getcompose.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -15,7 +15,7 @@ const handler = {
     postRegister : postRegister,
     postLogout : postLogout,
     getHome : getHome,
-    compose : compose
+    compose : getcompose
 };
 
 module.exports.routesHandler = handler
