@@ -14,6 +14,7 @@ const pageSchema=new mongoose.Schema({
 	content : String,
 	isPrivate : Boolean,
 	likes : Number,
+	likedBy : [],
 	comments : [{
 		comment : String,
 		user_id : String,
