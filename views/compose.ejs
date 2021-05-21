@@ -14,9 +14,9 @@
         <form class="" action="/compose" method="post">
             <label for="title">Select Diary</label>
 
-            <select name="cars" id="cars">
+            <select >
                 <%  for(var i=0 ;i < diaries.length ;i++) { %>
-                    <option value=<%= diaries[i] %>> <%=  diaries[i] %></option>
+                    <option value="<%= diaries[i] %>"> <%=  diaries[i] %></option>
                 <% } %>
             </select>
 

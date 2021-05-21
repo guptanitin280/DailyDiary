@@ -3,6 +3,6 @@ module.exports=async function(username,User) {
     return await User.findOne({'username': username}, 'myDiaries', function (err, user) {
         if (err) return console.log(err);
         console.log("did it run",user);
-       return  user.myDiaries;
+       return user;
     });
 }

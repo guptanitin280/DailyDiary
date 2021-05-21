@@ -6,6 +6,8 @@ const getLogin = require(__dirname+"/getRoutes/getLogin.js");
 const getHome = require(__dirname+"/getRoutes/getHome.js");
 const getRegister = require(__dirname+"/getRoutes/getRegister.js");
 const getcompose = require(__dirname+"/getRoutes/getcompose.js");
+const getNewDiaries = require(__dirname+"/getRoutes/getNewDiaries.js");
+const postNewDiaries = require(__dirname+"/postRoutes/postNewDiaries.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -15,7 +17,9 @@ const handler = {
     postRegister : postRegister,
     postLogout : postLogout,
     getHome : getHome,
-    compose : getcompose
+    compose : getcompose,
+    getNewDiaries : getNewDiaries,
+    postNewDiaries : postNewDiaries,
 };
 
 module.exports.routesHandler = handler
