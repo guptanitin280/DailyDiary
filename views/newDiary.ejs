@@ -1,23 +1,23 @@
 <%- include('partials/header') %>
-<h1 style="float: left;"class="title"> author :<%= name %> </h1>
-<form action="/logout" method="get">
-    <button style="float: right;" type="submit" class="btn btn-primary">logout</button>
-</form>
+
 <form action="/dashboard" method="get">
-    <button style="float: right;" type="submit" class="btn btn-primary">Dashboard</button>
+    <button type="submit"  >Dashboard</button>
 </form>
+<hr>
+
+<h1 style="margin: 2% auto 5% 15%"> author : <%= name %> </h1>
+
 <div class="container">
     <div class="jumbotron centered">
         <form class="" action="/newDiary" method="post">
-
             <label for="title">Diary Name</label>
             <input type="text" id="title" class="form-control" name="diaryName" value="">
             <label for="Cotent" >Content</label>
-            <textarea name="content" id="Content" class="form-control" rows="10" cols="80">Write here</textarea>
+            <textarea name="content" id="Content" class="form-control" rows="10" cols="80"></textarea>
             <br>
             <button type="submit" class="btn btn-lg btn-success" name="button">Write</button>
         </form>
     </div>
 </div>
-\
+
 <%- include('partials/footer') %>

@@ -68,8 +68,8 @@ async function generateDb() {
 		})
 		await newDairy2.save();
 		let did = [];
-		did.push({diary_id : newDairy.id})
-		did.push({diary_id : newDairy2.id})
+		did.push({diary_id : newDairy.id, diary_name : newDairy.name})
+		did.push({diary_id : newDairy2.id,  diary_name : newDairy2.name})
 		await userModel.updateOne({username : newUser.username}, {
 			myDiaries : did
 		})
@@ -81,6 +81,7 @@ async function generateDb() {
 				owner_id : newUser.id,
 				author_id : newUser.id,
 				content : "It's the page written by me baby, what else you need for content",
+				author_name : newUser.username,
 				isPrivate : true,
 				likes : i + 19,
 				comments : null,
@@ -94,6 +95,7 @@ async function generateDb() {
 				owner_id : newUser.id,
 				author_id : newUser.id,
 				content : "It's the page written by me baby, what else you need for content",
+				author_name : newUser.username,
 				isPrivate : false,
 				likes : i + 19,
 				comments : null,

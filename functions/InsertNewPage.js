@@ -7,7 +7,8 @@ module.exports= function(req,diaryId,content,pageModel,diaryModel) {
             console.log(diary);
             let newPage = new pageModel({
                 owner_id: diary.owner_id,
-                author_id: req.user.username,
+                author_id: req.user.id,
+                author_name : req.user.username,
                 isPrivate: true,
                 likes: 0,
                 content: content,

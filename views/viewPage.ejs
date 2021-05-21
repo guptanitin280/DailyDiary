@@ -1,59 +1,36 @@
 <%- include('partials/header'); -%>
 
 
+<form action="/dashboard" method="get">
+    <button type="submit"  >Dashboard</button>
+</form>
+<hr>
 
-<div class = "left-body">
-    <div class="left-navbar">
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Home</a>
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Explore</a>
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Massages</a>
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Bookmarks</a>
-    </div>
-    <hr>
-    <div class="left-profile-div" >
-        <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail w-25 " alt="...">
-        <a href="/"> username </a>
-    </div>
-</div>
 
 <div class = "mid-body">
-    <div class="top-header">
-        <div class="fixed-home-directive">
-            <nav class="navbar bg-light">
-                <span class="navbar-brand mb-0 h1">Your Page</span>
-            </nav>
-        </div>
         <h2> <%= descriptionOfDairy %></h2>
-    </div>
+    <hr>
     <hr>
     <div class="card" >
-        <div class="card-header">
-            <p>this is header </p>
-        </div>
-        <div class="card-body">
-            <p><%= page.content %> </p>
-        </div>
-        <div class="card-footer bg-transparent card-footer ">
-            <span><a href="" class="icon-like"> <i class="far fa-heart"></i> </a></span>
-            <%= page.likes %>
-            <span><a href="#" class="icon-comment"> <i class="far fa-comment"></i></a></span>
-            <%= page.comments %>
-
-            <span><a href="#" class="icon-bookmark"> <i class="far fa-bookmark"></i></a></span>
-            <%= page.timeStamp %>
-        </div>
-    </div>
-</div>
-
-
-<div class = "right-body">
-    <div class="notice-icon">
-        <span><i class="far fa-bell"></i></span>
-    </div>
-    <div class="lower-button" >
-        <form action="/logout" method="post">
-            <button type="submit" class="btn btn-primary btn-lg active">logout</button>
-        </form>
+        <p><%= page.createdAt %></p>
+        <p><%= page.content %></p>
+        <p><%= page.author_name %></p>
+        <% if (page.isPrivate === false) {%>
+            <div class="card-footer">
+                <span>
+                    <form style="display: inline" action="/likePage/<%= page.id%>" method="post">
+                        <label> <%= page.likes %></label>
+                        <button type="submit"><i class="far fa-heart"></i></button>
+                    </form>
+                    <form  style="display: inline"  action="/bookmark/<%= page.id%>" method="post">
+                        <button type="submit"><i class="far fa-comment"></i></button>
+                    </form>
+                    <form  style="display: inline"  action="/comment/<%= page.id%>" method="post">
+                        <button type="submit"><i class="far fa-bookmark"></i></button>
+                    </form>
+                </span>
+            </div>
+        <% } %>
     </div>
 </div>
 

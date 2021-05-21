@@ -11,6 +11,7 @@ module.exports=function(user,diaryName,content,userModel,PageModel,DiaryModel) {
             let pg1 = new PageModel({
                 owner_id: user._id,
                 author_id: user._id,
+                author_name : user.username,
                 isPrivate: true,
                 likes: 0,
                 content: content,
@@ -25,7 +26,7 @@ module.exports=function(user,diaryName,content,userModel,PageModel,DiaryModel) {
                             if (err)
                                 console.log(err);
                         });
-                    userModel.updateOne({'_id': user._id}, {"$push": {myDiaries: {diary_id: diary._id}}},
+                    userModel.updateOne({'_id': user._id}, {"$push": {myDiaries: {diary_id: diary._id, diary_name : diary.name}}},
                         function (err) {
                             if (err)
                                 console.log(err);

@@ -34,7 +34,8 @@ const userSchema=new mongoose.Schema({
 		diary_id: String
 	}],
 	myDiaries : [{
-		diary_id: String
+		diary_id: String,
+		diary_name: String
 	}],
 	access: [{
 		diary_id : String,

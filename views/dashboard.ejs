@@ -3,108 +3,57 @@
 
 <div class = "left-body">
     <div class="left-navbar">
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Home</a>
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Explore</a>
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Massages</a>
-        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Bookmarks</a>
+        <a href="/dashboard" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Home</a>
+        <a href="/explore" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Explore</a>
+        <a href="/massages" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Massages</a>
+        <a href="/bookmarks" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Bookmarks</a>
     </div>
     <hr>
     <div class="left-profile-div" >
         <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail w-25 " alt="...">
-        <a href="/"> <%= user.name %> </a>
+        <a href="/editProfile"> <%= user.username %> </a>
+            <form action="/logout" method="post">
+                <button type="submit"> logout</button>
+            </form>
     </div>
 </div>
 
 <div class = "mid-body">
     <div class="top-header">
-        <div class="fixed-home-directive">
-            <nav class="navbar bg-light">
-                <span class="navbar-brand mb-0 h1"><h3 class="ml-auto">Home</h3></span>
-            </nav>
-        </div>
-        <div class="top-header-write">
+        <h1> Home </h1>
             <img src="images/profile-pic.jpeg" class="prfile-icon" alt="...">
-            <div class="top-composer-text">
-                <input class="form-control form-control-lg " type="text" placeholder="Dear Diary">
-                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Compose</a>
-            </div>
-        </div>
+            <input type="text" placeholder="Dear Diary">
+            <form method="get" action="/compose" >
+                <button type="submit" >Compose </button>
+            </form>
     </div>
     <hr>
-    <div class="card" >
-        <div class="card-header">
-            <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
-            <span>Sobhagya singh</span>
+    <div>
+        <% pages.forEach((page) => { %>
+        <div class="card" >
+            <div class="card-header">
+                <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
+                <span><%= page.author_name %></span>
+            </div>
+            <div class="card-body">
+                <p><%= page.content%></p>
+            </div>
+            <div class="card-footer">
+                <span>
+                    <form style="display: inline" action="/likePage/<%= page.id%>" method="post">
+                        <label> <%= page.likes %></label>
+                        <button type="submit"><i class="far fa-heart"></i></button>
+                    </form>
+                    <form  style="display: inline"  action="/bookmark/<%= page.id%>" method="post">
+                        <button type="submit"><i class="far fa-comment"></i></button>
+                    </form>
+                    <form  style="display: inline"  action="/comment/<%= page.id%>" method="post">
+                        <button type="submit"><i class="far fa-bookmark"></i></button>
+                    </form>
+                </span>
+            </div>
         </div>
-        <div class="card-body">
-            <p>What is Lorem Ipsum?</p>
-            </p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        </div>
-        <div class="card-footer bg-transparent card-footer ">
-            <span><a href="#" class="icon-like"> <i class="far fa-heart"></i> </a></span>
-            <span><a href="#" class="icon-comment"> <i class="far fa-comment"></i></a></span>
-            <span><a href="#" class="icon-bookmark"> <i class="far fa-bookmark"></i></a></span>
-        </div>
-    </div>
-    <div class="card" >
-        <div class="card-header">
-            <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
-            <span>Sobhagya singh</span>
-        </div>
-        <div class="card-body">
-            <p>What is Lorem Ipsum?</p>
-            </p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        </div>
-        <div class="card-footer bg-transparent card-footer ">
-            <span><a href="#" class="icon-like"> <i class="far fa-heart"></i> </a></span>
-            <span><a href="#" class="icon-comment"> <i class="far fa-comment"></i></a></span>
-            <span><a href="#" class="icon-bookmark"> <i class="far fa-bookmark"></i></a></span>
-        </div>
-    </div>
-    <div class="card" >
-        <div class="card-header">
-            <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
-            <span>Sobhagya singh</span>
-        </div>
-        <div class="card-body">
-            <p>What is Lorem Ipsum?</p>
-            </p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        </div>
-        <div class="card-footer bg-transparent card-footer ">
-            <span><a href="#" class="icon-like"> <i class="far fa-heart"></i> </a></span>
-            <span><a href="#" class="icon-comment"> <i class="far fa-comment"></i></a></span>
-            <span><a href="#" class="icon-bookmark"> <i class="far fa-bookmark"></i></a></span>
-        </div>
-    </div>
-    <div class="card" >
-        <div class="card-header">
-            <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
-            <span>Sobhagya singh</span>
-        </div>
-        <div class="card-body">
-            <p>What is Lorem Ipsum?</p>
-            </p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        </div>
-        <div class="card-footer bg-transparent card-footer ">
-            <span><a href="#" class="icon-like"> <i class="far fa-heart"></i> </a></span>
-            <span><a href="#" class="icon-comment"> <i class="far fa-comment"></i></a></span>
-            <span><a href="#" class="icon-bookmark"> <i class="far fa-bookmark"></i></a></span>
-        </div>
-    </div>
-    <div class="card" >
-        <div class="card-header">
-            <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
-            <span>Sobhagya singh</span>
-        </div>
-        <div class="card-body">
-            <p>What is Lorem Ipsum?</p>
-            </p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        </div>
-        <div class="card-footer bg-transparent card-footer ">
-            <span><a href="#" class="icon-like"> <i class="far fa-heart"></i> </a></span>
-            <span><a href="#" class="icon-comment"> <i class="far fa-comment"></i></a></span>
-            <span><a href="#" class="icon-bookmark"> <i class="far fa-bookmark"></i></a></span>
-        </div>
+        <%})%>
     </div>
 </div>
 <div class = "right-body">
@@ -112,17 +61,11 @@
         <span><i class="far fa-bell"></i></span>
     </div>
     <div>
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Dairies</button>
-        <div class="dropdown-menu">
-        <% user.myDiaries.forEach((diaryId,inx) => { %>
-                <a class="dropdown-item" href="/getDiary/<%= diaryId.diary_id %>" > My Dairy <%=inx%></a>
-        <%}) %>
-        </div>
-    </div>
-    <div class="lower-button" >
-        <form action="/logout" method="post">
-            <button type="submit" class="btn btn-primary btn-lg active">logout</button>
+        <% user.myDiaries.forEach((diaryId) => { %>
+        <form action="/getDiary/<%=diaryId.diary_id%>" method="get">
+            <button type="submit" ><%= diaryId.diary_name %></button>
         </form>
+         <%}) %>
     </div>
 </div>
 

@@ -50,7 +50,7 @@ passport.deserializeUser((id, done) => {
 
 
 app.get("/", (req,res) => routesHandler.getHome(req,res) );
-app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel));
+app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel, pageModel));
 app.get("/login", (req,res) => routesHandler.getLogin(req,res) );
 app.get("/register",(req,res) => routesHandler.getRegister(req,res) );
 app.post("/login",(req,res)=>routesHandler.postLogin(req,res,userModel,passport));
