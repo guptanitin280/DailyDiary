@@ -59,6 +59,7 @@ app.post("/register",(req,res)=>routesHandler.postRegister(req,res,userModel,pas
 app.post("/logout",(req,res)=>routesHandler.postLogout(req,res));
 app.get("/newDiaries",(req,res)=>routesHandler.getNewDiaries(req,res));
 app.post("/newDiary",(req,res)=>routesHandler.postNewDiaries(req,res,userModel,diaryModel,pageModel));
+app.post("/compose",(req,res)=>routesHandler.postCompose(req,res,pageModel,diaryModel));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })

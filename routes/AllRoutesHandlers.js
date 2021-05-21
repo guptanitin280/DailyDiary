@@ -8,6 +8,7 @@ const getRegister = require(__dirname+"/getRoutes/getRegister.js");
 const getcompose = require(__dirname+"/getRoutes/getcompose.js");
 const getNewDiaries = require(__dirname+"/getRoutes/getNewDiaries.js");
 const postNewDiaries = require(__dirname+"/postRoutes/postNewDiaries.js");
+const postCompose = require(__dirname+"/postRoutes/postCompose.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -20,6 +21,7 @@ const handler = {
     compose : getcompose,
     getNewDiaries : getNewDiaries,
     postNewDiaries : postNewDiaries,
+    postCompose : postCompose
 };
 
 module.exports.routesHandler = handler
