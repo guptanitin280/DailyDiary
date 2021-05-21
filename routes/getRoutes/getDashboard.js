@@ -7,11 +7,12 @@ const getDashboard = (req, res, userModel) =>
 	else
 		res.redirect("/login");
 	console.log(username);
+
 	userModel.find({username:username},function(err,user){
 		if(err){
 			console.log(err);
 		} else {
-			if(user){
+			if(user.length > 0){
 				res.render("dashboard",{username:username});
 			} else {
 				res.redirect("/");

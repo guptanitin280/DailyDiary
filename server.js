@@ -49,13 +49,13 @@ passport.deserializeUser((id, done) => {
 });
 
 
-app.get("/", (req,res) => res.render("home"));
+app.get("/", (req,res) => routesHandler.getHome(req,res) );
 app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel));
-app.get("/login",function(req,res) { res.render("login"); });
-app.get("/register",function(req,res) { res.render("register");});
-app.post("/login",(req,res)=>routesHandler.login(req,res,userModel,passport));
-app.post("/register",(req,res)=>routesHandler.register(req,res,userModel,passport));
-app.get("/logout",(req,res)=>routesHandler.logout(req,res));
+app.get("/login", (req,res) => routesHandler.getLogin(req,res) );
+app.get("/register",(req,res) => routesHandler.getRegister(req,res) );
+app.post("/login",(req,res)=>routesHandler.postLogin(req,res,userModel,passport));
+app.post("/register",(req,res)=>routesHandler.postRegister(req,res,userModel,passport));
+app.post("/logout",(req,res)=>routesHandler.postLogout(req,res));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })
