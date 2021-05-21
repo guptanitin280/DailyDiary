@@ -1,0 +1,55 @@
+<%- include('partials/header'); -%>
+
+
+
+<div class = "left-body">
+    <div class="left-navbar">
+        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Home</a>
+        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Explore</a>
+        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Massages</a>
+        <a href="#" class="btn btn-primary btn-lg active left-navbar-button" role="button" aria-pressed="true">Bookmarks</a>
+    </div>
+    <hr>
+    <div class="left-profile-div" >
+        <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail w-25 " alt="...">
+        <a href="/"> username </a>
+    </div>
+</div>
+
+<div class = "mid-body">
+    <div class="top-header">
+        <div class="fixed-home-directive">
+            <nav class="navbar bg-light">
+                <span class="navbar-brand mb-0 h1">Your Dairy : <%= dairy.name %></span>
+            </nav>
+        </div>
+        <h2> <%= descriptionOfDairy %></h2>
+    </div>
+    <hr>
+    <% dairy.page_ids.forEach(function(blogId){ %>
+    <div class="card" >
+        <div class="card-header">
+            <span><a href="/getPage/<%= blogId.page_id%>"> <%= blogId.page_id%></a></span>
+        </div>
+        <div class="card-footer bg-transparent card-footer ">
+            <span><a href="#" class="icon-like"> <i class="far fa-heart"></i> </a></span>
+            <span><a href="#" class="icon-comment"> <i class="far fa-comment"></i></a></span>
+            <span><a href="#" class="icon-bookmark"> <i class="far fa-bookmark"></i></a></span>
+        </div>
+    </div>
+    <% })%>
+</div>
+
+
+<div class = "right-body">
+    <div class="notice-icon">
+        <span><i class="far fa-bell"></i></span>
+    </div>
+    <div class="lower-button" >
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-primary btn-lg active">logout</button>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

@@ -54,12 +54,14 @@ app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel
 app.get("/login", (req,res) => routesHandler.getLogin(req,res) );
 app.get("/register",(req,res) => routesHandler.getRegister(req,res) );
 app.post("/login",(req,res)=>routesHandler.postLogin(req,res,userModel,passport));
-app.get("/compose",(req,res)=>routesHandler.compose(req,res,userModel));
+app.get("/compose",(req,res)=>routesHandler.getCompose(req,res,userModel));
 app.post("/register",(req,res)=>routesHandler.postRegister(req,res,userModel,passport));
 app.post("/logout",(req,res)=>routesHandler.postLogout(req,res));
 app.get("/newDiaries",(req,res)=>routesHandler.getNewDiaries(req,res));
-app.post("/newDiary",(req,res)=>routesHandler.postNewDiaries(req,res,userModel,diaryModel,pageModel));
 app.post("/compose",(req,res)=>routesHandler.postCompose(req,res,pageModel,diaryModel));
+app.post("/newDiary",(req,res)=>routesHandler.postNewDiaries(req,res,userModel,diaryModel,pageModel));
+app.get("/getDiary/:dairy_id", (req,res) => routesHandler.getDiary(req,res,diaryModel));
+app.get("/getPage/:page_id", (req,res) => routesHandler.getViewPage(req,res,pageModel,diaryModel));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })

@@ -52,6 +52,7 @@ async function generateDb() {
 			bio : "hey it's me " + users[i],
 			notifications : notfi
 		})
+		await userModel.register(newUser, "1234")
 		user_ids.push(newUser.id)
 		await newUser.save();
 		let newDairy = new diaryModel({
@@ -69,7 +70,7 @@ async function generateDb() {
 		let did = [];
 		did.push({diary_id : newDairy.id})
 		did.push({diary_id : newDairy2.id})
-		await userModel.updateOne({username : newUser.username},[], {
+		await userModel.updateOne({username : newUser.username}, {
 			myDiaries : did
 		})
 		open_dairy_id.push(newDairy2.id);
@@ -127,5 +128,5 @@ async function remove() {
 	await diaryModel.remove({})
 	await pageModel.remove({})
 }
-remove()
+// remove()
 generateDb();
