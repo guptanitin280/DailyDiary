@@ -54,6 +54,7 @@ app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel
 app.get("/login", (req,res) => routesHandler.getLogin(req,res) );
 app.get("/register",(req,res) => routesHandler.getRegister(req,res) );
 app.post("/login",(req,res)=>routesHandler.postLogin(req,res,userModel,passport));
+app.get("/compose",(req,res)=>routesHandler.compose(req,res,userModel));
 app.post("/register",(req,res)=>routesHandler.postRegister(req,res,userModel,passport));
 app.post("/logout",(req,res)=>routesHandler.postLogout(req,res));
 app.listen(8000 , () => {

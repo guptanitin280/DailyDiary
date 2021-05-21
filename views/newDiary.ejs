@@ -6,22 +6,13 @@
 <form action="/dashboard" method="get">
     <button style="float: right;" type="submit" class="btn btn-primary">Dashboard</button>
 </form>
-<form action="/newDiaries" method="get">
-    <button style="float: right;" type="submit" class="btn btn-primary">New Diary</button>
-</form>
 <div class="container">
     <div class="jumbotron centered">
-        <form class="" action="/compose" method="post">
-            <label for="title">Select Diary</label>
+        <form class="" action="/newDiary" method="post">
 
-            <select name="cars" id="cars">
-                <%  for(var i=0 ;i < diaries.length ;i++) { %>
-                    <option value=<%= diaries[i] %>> <%=  diaries[i] %></option>
-                <% } %>
-            </select>
-
-
-            <label for="Cotent" >Write next page here</label>
+            <label for="title">Diary Name</label>
+            <input type="text" id="title" class="form-control" name="title" value="">
+            <label for="Cotent" >Content</label>
             <textarea name="content" id="Content" class="form-control" rows="10" cols="80"><%= content %></textarea>
             <br>
             <button type="submit" class="btn btn-lg btn-success" name="button">Write</button>
