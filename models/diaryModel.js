@@ -1,10 +1,6 @@
 const mongoose=require("mongoose");
 
 const diarySchema=new mongoose.Schema({
-	_id : {
-		type : String,
-		required : true
-	},
 	owner_id : {
 		type : String,
 		required : true
@@ -12,7 +8,10 @@ const diarySchema=new mongoose.Schema({
 	page_ids:[{
 		page_id: String
 	}],
-
+	name : {
+		type : String,
+		required : true
+	},
 	followers : [{
 		user_id : String,
 		favicon : {

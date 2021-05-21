@@ -2,10 +2,6 @@ const mongoose=require("mongoose");
 
 
 const pageSchema=new mongoose.Schema({
-	_id : {
-		type : String,
-		required : true
-	},
 	owner_id : {
 		type : String,
 		required : true
