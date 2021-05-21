@@ -6,6 +6,10 @@ const pageSchema=new mongoose.Schema({
 		type : String,
 		required : true
 	},
+	author_id : {
+		type :String,
+		required :true
+	},
 	diary_id:String,
 	content : String,
 	isPrivate : Boolean,

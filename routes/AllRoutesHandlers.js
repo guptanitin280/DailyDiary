@@ -8,6 +8,8 @@ const getRegister = require(__dirname+"/getRoutes/getRegister.js");
 const getcompose = require(__dirname+"/getRoutes/getcompose.js");
 const getDiary = require(__dirname + "/getRoutes/getDairy.js");
 const getViewPage = require(__dirname + "/getRoutes/getViewPage.js")
+const getNewDiaries = require(__dirname+"/getRoutes/getNewDiaries.js");
+const postNewDiaries = require(__dirname+"/postRoutes/postNewDiaries.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -19,7 +21,9 @@ const handler = {
     getHome : getHome,
     getDiary: getDiary,
     getCompose : getcompose,
-    getViewPage : getViewPage
+    getViewPage : getViewPage,
+    getNewDiaries : getNewDiaries,
+    postNewDiaries : postNewDiaries,
 };
 
 module.exports.routesHandler = handler
