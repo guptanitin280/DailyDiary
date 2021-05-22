@@ -17,6 +17,8 @@ const postAddAFriend= require(__dirname+"/postRoutes/postAddAFriend.js");
 const getFriendList = require(__dirname + "/getRoutes/getFriendList.js");
 const getGrantAccess = require(__dirname + "/getRoutes/getGrantAccess.js");
 const postGrantAccess = require(__dirname + "/postRoutes/postGrantAccess.js");
+const getExplore = require(__dirname +"/getRoutes/getExplore.js");
+const postSearchedUser = require(__dirname+"/postRoutes/postSearchUser.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -37,7 +39,9 @@ const handler = {
     postAddAFriend : postAddAFriend,
     getFriendList : getFriendList,
     getGrantAccess : getGrantAccess,
-    postGrantAccess : postGrantAccess
+    postGrantAccess : postGrantAccess,
+    getExplore : getExplore,
+    postSearchedUser : postSearchedUser
 };
 
 module.exports.routesHandler = handler
