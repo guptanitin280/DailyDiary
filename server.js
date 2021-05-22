@@ -72,8 +72,8 @@ app.get("/explore",(req,res)=>routesHandler.getExplore(req,res));
 app.post("/searchUser",(req,res)=>routesHandler.postSearchedUser(req,res,userModel));
 app.get("/myDiaries", (req, res) => routesHandler.getMyDairiesList(req,res,));
 app.post("/followDairy", (req,res) => routesHandler.postFollowDairy(req,res, diaryModel, userModel));
-
-
+app.post("/addNewBookMark", (req,res) => routesHandler.postAddNewBookMark(req,res,userModel));
+app.get("/bookmarks", (req,res) => routesHandler.getBookMarks(req,res,userModel));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })

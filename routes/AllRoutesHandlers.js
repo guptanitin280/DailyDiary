@@ -21,6 +21,8 @@ const getExplore = require(__dirname +"/getRoutes/getExplore.js");
 const postSearchedUser = require(__dirname+"/postRoutes/postSearchUser.js");
 const getMyDairiesList = require(__dirname + "/getRoutes/getMyDairiesList.js");
 const postFollowDairy = require(__dirname + "/postRoutes/postFollowDairy.js");
+const postAddNewBookMark = require(__dirname + "/postRoutes/postAddNewBookMark.js");
+const getBookMarks = require(__dirname + "/getRoutes/getBookMarks.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -45,7 +47,9 @@ const handler = {
     getExplore : getExplore,
     postSearchedUser : postSearchedUser,
     getMyDairiesList : getMyDairiesList,
-    postFollowDairy: postFollowDairy
+    postFollowDairy: postFollowDairy,
+    postAddNewBookMark : postAddNewBookMark,
+    getBookMarks : getBookMarks
 };
 
 module.exports.routesHandler = handler

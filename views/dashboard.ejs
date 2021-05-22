@@ -40,17 +40,12 @@
                 <p><%= page.content%></p>
             </div>
             <div class="card-footer">
-                <span>
-<!--                    <form style="display: inline" id="<%= page.id%>" class="like-button" method="post">-->
-                        <button class="like-button" id="<%= page.id%>" type="submit"><i class="far fa-heart"></i></button>
+                <span id="<%= page.id%>">
+                    <button class="like-button"  type="submit"><i class="far fa-heart"></i></button>
                     <span><sup><%= page.likes %></sup></span>
-<!--                    </form>-->
-                    <form  style="display: inline"  action="/bookmark/<%= page.id%>" method="post">
-                        <button type="submit"><i class="far fa-comment"></i></button>
-                    </form>
-                    <form  style="display: inline"  action="/comment/<%= page.id%>" method="post">
-                        <button type="submit"><i class="far fa-bookmark"></i></button>
-                    </form>
+                    <button type="submit" ><i class="far fa-comment"></i></button>
+
+                    <button type="submit" class="add-to-bookmark-button"><i class="far fa-bookmark"></i></button>
                 </span>
             </div>
         </div>
@@ -78,11 +73,29 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script >
     $(".like-button").each(function() {
-        let id = $(this).attr('id')
+        let id = $(this).parent().attr('id')
         $(this).on("click" ,() => {
             axios({
                 method: 'post',
                 url: '/likeThisPost',
+                params: {
+                    pageId: id,
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        })
+    })
+    $(".add-to-bookmark-button").each(function() {
+        let id = $(this).parent().attr('id')
+        $(this).on("click" ,() => {
+            axios({
+                method: 'post',
+                url: '/addNewBookMark',
                 params: {
                     pageId: id,
                 }

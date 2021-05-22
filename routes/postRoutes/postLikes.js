@@ -1,6 +1,13 @@
 module.exports=function(req,res,pageModel){
+	if(!req.isAuthenticated()) {
+        res.redirect("/");
+        return
+    }
     console.log("from likes ",req.query)
-    let likes = require(__dirname + "/../../functions/likeThePost.js")(req.query.pageId,req.user,pageModel);
-    // res.redirect("/getPage/"+req.body.pageId);
-    res.json({likes: likes})
+    require(__dirname + "/../../functions/likeThePost.js")(req.query.pageId,req.user,pageModel).then(likes => {
+        console.log(likes)
+        res.json({likes: likes})
+    }).catch(err => {
+        res.send(err);
+    })
 }

@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+
+<form action="/dashboard" method="get">
+    <button type="submit"  >Dashboard</button>
+</form>
+<hr>
+
+
+<div class = "mid-body">
+    <p> Your Bookmarks : </p>
+    <% bookmark.forEach((page_id , idx) => { %>
+        <form method="get" action="/getPage/<%= page_id.page_id%>">
+            <button type="submit"> idx</button>
+        </form>
+    <%})%>
+
+</div>
+
+<%- include('partials/footer'); -%>

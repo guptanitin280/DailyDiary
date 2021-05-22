@@ -5,7 +5,6 @@ const getFriendList = (req, res) => {
     } else {
         res.render("viewFriendList" , {friends : req.user.friends})
     }
-
 };
 
 module.exports = getFriendList

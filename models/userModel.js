@@ -49,6 +49,9 @@ const userSchema=new mongoose.Schema({
 		notification: String,
 		arrivalTime: Date
 	}],
+	bookmarks: [ {
+		page_id: String
+	}]
 });
 
 userSchema.plugin(passportLocalMongoose);
