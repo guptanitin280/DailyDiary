@@ -8,7 +8,19 @@ const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
 const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js")
+const { LoremIpsum } = require("lorem-ipsum");
+// const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
+const lorem = new LoremIpsum({
+	sentencesPerParagraph: {
+		max: 8,
+		min: 4
+	},
+	wordsPerSentence: {
+		max: 16,
+		min: 4
+	}
+});
 
 mongoose.connect("mongodb://localhost:27017/userDataBase", {
 							useNewUrlParser: true,
@@ -80,7 +92,7 @@ async function generateDb() {
 			let page = new pageModel({
 				owner_id : newUser.id,
 				author_id : newUser.id,
-				content : "It's the page written by me baby, what else you need for content",
+				content : lorem.generateParagraphs(7),
 				author_name : newUser.username,
 				isPrivate : true,
 				likes : i + 19,
@@ -94,7 +106,7 @@ async function generateDb() {
 			let page = new pageModel({
 				owner_id : newUser.id,
 				author_id : newUser.id,
-				content : "It's the page written by me baby, what else you need for content",
+				content : lorem.generateParagraphs(7),
 				author_name : newUser.username,
 				isPrivate : false,
 				likes : i + 19,

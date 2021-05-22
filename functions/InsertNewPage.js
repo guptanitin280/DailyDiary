@@ -2,7 +2,7 @@ module.exports= function(req,diaryId,content,pageModel,diaryModel) {
     console.log("fuck",diaryId);
      diaryModel.findOne({'_id': diaryId},  function (err, diary) {
         if (err || !diary) {
-            console.log(err);
+            console.log("not dry",err);
         } else {
             console.log(diary);
             let newPage = new pageModel({
