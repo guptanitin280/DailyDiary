@@ -1,18 +1,18 @@
 module.exports= function(req,res,userModel) {
     if (req.isAuthenticated()) {
-        const profile = req.body.profile;
+
         const user = req.user;
-        console.log(profile);
-        console.log("--------------------");
-        console.log(user);
         let friend = {
-            'friend_id': profile._id,
-            'name': profile.username
+            'friend_id': req.body.profileId,
+            'name': req.body.profileName
         }
-        user.friends.push(friend);
-        user.save(function(err){
+        console.log(friend);
+        console.log(user);
+        userModel.updateOne({'_id': user._id}, {'$push': {friends: friend}},function(err,res){
             if(err){
                 console.log(err);
+            }else{
+                console.log(res);
             }
         });
         res.redirect("/dashboard");
