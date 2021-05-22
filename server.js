@@ -9,8 +9,6 @@ const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
 const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js");
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
 
 app.use(express.static("public"));
 app.set('view engine','ejs');
@@ -46,9 +44,6 @@ passport.deserializeUser((id, done) => {
 	userModel.findById(id).then(user => {
 		done(null, user)
 	})
-});
-io.on('connection', () =>{
-	console.log('a user is connected')
 });
 
 app.get("/", (req,res) => routesHandler.getHome(req,res) );
