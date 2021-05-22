@@ -12,6 +12,9 @@ const getNewDiaries = require(__dirname+"/getRoutes/getNewDiaries.js");
 const postNewDiaries = require(__dirname+"/postRoutes/postNewDiaries.js");
 const postCompose = require(__dirname+"/postRoutes/postCompose.js");
 const postLikes = require(__dirname+"/postRoutes/postLikes.js");
+const getFriendList = require(__dirname + "/getRoutes/getFriendList.js");
+const getGrantAccess = require(__dirname + "/getRoutes/getGrantAccess.js");
+const postGrantAccess = require(__dirname + "/postRoutes/postGrantAccess.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -27,7 +30,10 @@ const handler = {
     getNewDiaries : getNewDiaries,
     postNewDiaries : postNewDiaries,
     postCompose : postCompose,
-    postLikes : postLikes,
+    postLikeThisPost : postLikes,
+    getFriendList : getFriendList,
+    getGrantAccess : getGrantAccess,
+    postGrantAccess : postGrantAccess
 };
 
 module.exports.routesHandler = handler

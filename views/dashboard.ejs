@@ -32,7 +32,7 @@
         <% pages.forEach((page) => { %>
         <div class="card" >
             <div class="card-header">
-                <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
+                <img src="/images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
                 <span><%= page.author_name %></span>
             </div>
             <div class="card-body">
@@ -40,10 +40,10 @@
             </div>
             <div class="card-footer">
                 <span>
-                    <form style="display: inline" action="/likePage/<%= page.id%>" method="post">
-                        <label> <%= page.likes %></label>
-                        <button type="submit"><i class="far fa-heart"></i></button>
-                    </form>
+<!--                    <form style="display: inline" id="<%= page.id%>" class="like-button" method="post">-->
+                        <button class="like-button" id="<%= page.id%>" type="submit"><i class="far fa-heart"></i></button>
+                    <span><sup><%= page.likes %></sup></span>
+<!--                    </form>-->
                     <form  style="display: inline"  action="/bookmark/<%= page.id%>" method="post">
                         <button type="submit"><i class="far fa-comment"></i></button>
                     </form>
@@ -67,6 +67,38 @@
         </form>
          <%}) %>
     </div>
+    <div>
+        <form action="/getFriendList" method="get">
+            <button type="submit"> My Friends </button>
+        </form>
+    </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script >
+    $(".like-button").each(function() {
+        let id = $(this).attr('id')
+        $(this).on("click" ,() => {
+            axios({
+                method: 'post',
+                url: '/likeThisPost',
+                params: {
+                    pageId: id,
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        })
+    })
+    // var retval = []
+    // $('.like-button').each(function(){
+    //     retval.push($(this).attr('id'))
+    // })
+    // console.log(retval)
+</script>
 <%- include('partials/footer'); -%>

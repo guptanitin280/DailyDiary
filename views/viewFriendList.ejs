@@ -1,0 +1,26 @@
+<%- include('partials/header'); -%>
+
+
+<form action="/dashboard" method="get">
+    <button type="submit"  >Dashboard</button>
+</form>
+<hr>
+
+
+<div class = "mid-body">
+    <h2> Your Friends </h2>
+    <hr>
+    <hr>
+    <% friends.forEach(friend => { %>
+    <div class="card" >
+        <p> <%= friend.name %></p>
+        <form action="/getGrantAccess" method="get">
+            <input type="hidden" value="<%=friend.name%>" name="friend_name">
+            <input type="hidden" value="<%=friend.id%>" name="friend_id">
+            <button type="submit"> Give Dairy Acccess </button>
+        </form>
+        <% })%>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

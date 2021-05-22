@@ -62,6 +62,10 @@ app.post("/compose",(req,res)=>routesHandler.postCompose(req,res,pageModel,diary
 app.post("/newDiary",(req,res)=>routesHandler.postNewDiaries(req,res,userModel,diaryModel,pageModel));
 app.get("/getDiary/:dairy_id", (req,res) => routesHandler.getDiary(req,res,diaryModel));
 app.get("/getPage/:page_id", (req,res) => routesHandler.getViewPage(req,res,pageModel,diaryModel));
+app.post("/likeThisPost", (req,res) => routesHandler.postLikeThisPost(req,res,pageModel));
+app.get("/getFriendList", (req,res) => routesHandler.getFriendList(req,res));
+app.get("/getGrantAccess", (req,res) => routesHandler.getGrantAccess(req,res));
+app.post("/postGrantAccess", (req,res) => routesHandler.postGrantAccess(req,res));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })

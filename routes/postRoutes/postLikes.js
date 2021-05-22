@@ -1,4 +1,6 @@
 module.exports=function(req,res,pageModel){
-    require(__dirname + "/../../functions/likeThePost.js")(req.body.pageId,req.user._id,pageModel);
-    res.redirect("/getPage/"+req.body.pageId);
+    console.log("from likes ",req.query)
+    let likes = require(__dirname + "/../../functions/likeThePost.js")(req.query.pageId,req.user,pageModel);
+    // res.redirect("/getPage/"+req.body.pageId);
+    res.json({likes: likes})
 }
