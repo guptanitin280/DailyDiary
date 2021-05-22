@@ -68,8 +68,8 @@ app.get("/getGrantAccess", (req,res) => routesHandler.getGrantAccess(req,res));
 app.post("/postGrantAccess", (req,res) => routesHandler.postGrantAccess(req,res , userModel,diaryModel));
 app.get("/getProfile/:user_id",(req,res)=>routesHandler.getProfile(req,res,userModel));
 app.post("/postAddAFriend",(req,res)=>routesHandler.postAddAFriend(req,res,userModel));
-
-
+app.get("/explore",(req,res)=>routesHandler.getExplore(req,res));
+app.post("/searchUser",(req,res)=>routesHandler.postSearchedUser(req,res,userModel));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })

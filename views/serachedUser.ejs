@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+<form action="/explore" method="get">
+    <button type="submit" >back</button>
+</form>
+
+<hr>
+<hr>
+<hr>
+
+<div class = "dairy-view-main">
+    <h1> Users : </h1>
+    <hr>
+        <% for( var i=0;i<users.length;i++){ %>
+        <a href="/getProfile/<%= users[i]._id %>"> <%= users[i].username %></a>
+    <% } %>
+</div>
+
+
+<%- include('partials/footer'); -%>
