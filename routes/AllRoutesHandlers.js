@@ -19,6 +19,7 @@ const getGrantAccess = require(__dirname + "/getRoutes/getGrantAccess.js");
 const postGrantAccess = require(__dirname + "/postRoutes/postGrantAccess.js");
 const getExplore = require(__dirname +"/getRoutes/getExplore.js");
 const postSearchedUser = require(__dirname+"/postRoutes/postSearchUser.js");
+const getMessages = require(__dirname+"/getRoutes/getMessages.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -41,7 +42,8 @@ const handler = {
     getGrantAccess : getGrantAccess,
     postGrantAccess : postGrantAccess,
     getExplore : getExplore,
-    postSearchedUser : postSearchedUser
+    postSearchedUser : postSearchedUser,
+    getMessages : getMessages
 };
 
 module.exports.routesHandler = handler

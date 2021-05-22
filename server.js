@@ -7,10 +7,10 @@ const session=require('express-session');
 const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
-const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js")
-
+const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js");
 const app = express();
-
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 app.use(express.static("public"));
 app.set('view engine','ejs');
@@ -47,7 +47,9 @@ passport.deserializeUser((id, done) => {
 		done(null, user)
 	})
 });
-
+io.on('connection', () =>{
+	console.log('a user is connected')
+});
 
 app.get("/", (req,res) => routesHandler.getHome(req,res) );
 app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel, pageModel));
@@ -70,6 +72,7 @@ app.get("/getProfile/:user_id",(req,res)=>routesHandler.getProfile(req,res,userM
 app.post("/postAddAFriend",(req,res)=>routesHandler.postAddAFriend(req,res,userModel));
 app.get("/explore",(req,res)=>routesHandler.getExplore(req,res));
 app.post("/searchUser",(req,res)=>routesHandler.postSearchedUser(req,res,userModel));
+app.get("/messages",(req,res)=>routesHandler.getMessages(req,res));
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })
