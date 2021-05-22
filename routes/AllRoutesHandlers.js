@@ -22,6 +22,8 @@ const postSearchedUser = require(__dirname+"/postRoutes/postSearchUser.js");
 const getMyDairiesList = require(__dirname + "/getRoutes/getMyDairiesList.js");
 const postFollowDairy = require(__dirname + "/postRoutes/postFollowDairy.js");
 const getMessages = require(__dirname+"/getRoutes/getMessages.js");
+const getEditPage = require(__dirname+"/getRoutes/getEditPage.js");
+const postEditPage = require(__dirname+"/postRoutes/postEditPage.js");
 
 const handler = {
     getDashboard : getDashboard,
@@ -47,7 +49,9 @@ const handler = {
     postSearchedUser : postSearchedUser,
     getMyDairiesList : getMyDairiesList,
     postFollowDairy: postFollowDairy,
-    getMessages : getMessages
+    getMessages : getMessages,
+    getEditPage : getEditPage,
+    postEditPage : postEditPage,
 };
 
 module.exports.routesHandler = handler
