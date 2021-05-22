@@ -16,7 +16,7 @@
         <p> <%= friend.name %></p>
         <form action="/getGrantAccess" method="get">
             <input type="hidden" value="<%=friend.name%>" name="friend_name">
-            <input type="hidden" value="<%=friend.id%>" name="friend_id">
+            <input type="hidden" value="<%=friend.friend_id%>" name="friend_id">
             <button type="submit"> Give Dairy Acccess </button>
         </form>
         <% })%>

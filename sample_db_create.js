@@ -128,7 +128,7 @@ async function generateDb() {
 		for (var j = 0; j < user_ids.length; j++) {
 			if(user_ids[j] != user_ids[i]){
 				frind.push ({
-					_id : user_ids[j],
+					friend_id : user_ids[j],
 					name : users[j]
 				})
 			}

@@ -6,11 +6,9 @@ module.exports= function(req,res,userModel) {
         console.log("--------------------");
         console.log(user);
         userModel.updateOne({'_id': user._id}, {
-            "$push": {
-                friends: {
-                    '_id': profile._id,
-                    'name': profile.username
-                }
+            $push: {
+                'friends.friend_id': profile._id,
+                'friends.name': profile.username
             }
         },function(err,response){
             if(err){
