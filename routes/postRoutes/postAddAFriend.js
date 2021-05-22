@@ -5,14 +5,16 @@ module.exports= function(req,res,userModel) {
         console.log(profile);
         console.log("--------------------");
         console.log(user);
-        let friend = {
-            'friend_id': profile._id,
-            'name': profile.username
-        }
-        user.friends.push(friend);
-        user.save(function(err){
+        userModel.updateOne({'_id': user._id}, {
+            $push: {
+                'friends.friend_id': profile._id,
+                'friends.name': profile.username
+            }
+        },function(err,response){
             if(err){
                 console.log(err);
+            }else{
+                console.log(response);
             }
         });
         res.redirect("/dashboard");

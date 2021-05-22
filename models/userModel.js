@@ -18,7 +18,7 @@ const userSchema=new mongoose.Schema({
 	},
 	bio : String,
 	friends : [{
-		_id : String,
+		friend_id : String,
 		name : String,
 		favicon : {
 			data : Buffer,
