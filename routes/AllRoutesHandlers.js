@@ -12,6 +12,8 @@ const getNewDiaries = require(__dirname+"/getRoutes/getNewDiaries.js");
 const postNewDiaries = require(__dirname+"/postRoutes/postNewDiaries.js");
 const postCompose = require(__dirname+"/postRoutes/postCompose.js");
 const postLikes = require(__dirname+"/postRoutes/postLikes.js");
+const getProfile = require(__dirname+"/getRoutes/getProfile.js");
+const postAddAFriend= require(__dirname+"/postRoutes/postAddAFriend.js");
 const getFriendList = require(__dirname + "/getRoutes/getFriendList.js");
 const getGrantAccess = require(__dirname + "/getRoutes/getGrantAccess.js");
 const postGrantAccess = require(__dirname + "/postRoutes/postGrantAccess.js");
@@ -31,6 +33,8 @@ const handler = {
     postNewDiaries : postNewDiaries,
     postCompose : postCompose,
     postLikeThisPost : postLikes,
+    getProfile : getProfile,
+    postAddAFriend : postAddAFriend,
     getFriendList : getFriendList,
     getGrantAccess : getGrantAccess,
     postGrantAccess : postGrantAccess

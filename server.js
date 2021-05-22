@@ -66,6 +66,10 @@ app.post("/likeThisPost", (req,res) => routesHandler.postLikeThisPost(req,res,pa
 app.get("/getFriendList", (req,res) => routesHandler.getFriendList(req,res));
 app.get("/getGrantAccess", (req,res) => routesHandler.getGrantAccess(req,res));
 app.post("/postGrantAccess", (req,res) => routesHandler.postGrantAccess(req,res));
+app.get("/getProfile/:user_id",(req,res)=>routesHandler.getProfile(req,res,userModel));
+app.post("/postAddAFriend",(req,res)=>routesHandler.postAddAFriend(req,res,userModel));
+
+
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })
