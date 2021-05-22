@@ -1,5 +1,6 @@
 
 const getRegister= (req, res) => {
+
     res.render("register")
 };
 

@@ -8,7 +8,7 @@ module.exports= function(req,res,userModel) {
         }
         console.log(friend);
         console.log(user);
-        userModel.updateOne({'_id': user._id}, {'$push': {friends: friend}},function(err,res){
+        userModel.updateOne({'_id': user._id , 'friends.friend_id' : {'$ne' :req.body.profileId}}, {'$push': {friends: friend}},function(err,res){
             if(err){
                 console.log(err);
             }else{
