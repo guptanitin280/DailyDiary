@@ -7,36 +7,50 @@ module.exports = async (req,res, userModel,diaryModel ) => {
     console.log(req.body)
     const friend_id = req.body.friend_id;
     const diaryId  = req.body.diary_id;
-    const diaryname  = req.body.diary_name;
-    const friendname  = req.body.friend_name
+    const friendname  = req.body.friend_name;
     const isWrite = req.body.is_write;
     const end_t = new Date(req.body.end_time);
     const st_t =  Date.now();
     console.log("en" , end_t, "st " , st_t);
-    const friend = await userModel.findByIdAndUpdate(friend_id , {
-        '$push' : {
-            access : {
-                diary_id :diaryId,
-                diary_name : diaryname,
-                startTime : st_t,
-                endTime : end_t,
-                isWrite : isWrite
-            }
+    const diary = await diaryModel.findById(diaryId);
+    const friend = await userModel.findById(friend_id);
+    if(diary === undefined || friend === undefined) {
+        res.send("diary or friend not found");
+        return
+    }
+    let toins = true;
+    for(let i =0; i < diary.access.length; i++) {
+        if(diary.access[i].user_id == friend_id) {
+            diary.access[i].endTime = end_t;
+            diary.access[i].isWrite = isWrite;
+            toins = false;
         }
-    })
-    const diary = await diaryModel.findByIdAndUpdate(diaryId , {
-        '$push' : {
-            access : {
-                user_id :friend_id,
-                user_name : friendname,
-                startTime : st_t,
-                endTime : end_t,
-                isWrite : isWrite
-            }
+    }
+    for(let i =0; i < friend.access.length; i++) {
+        if(friend.access[i].diary_id == diaryId) {
+            friend.access[i].endTime = end_t;
+            friend.access[i].isWrite = isWrite;
+            toins = false;
         }
-    })
-    console.log("diary " ,diary)
-    console.log("friend ", friend)
+    }
+    if(toins) {
+        diary.access.push({
+            user_id :friend_id,
+            user_name : friendname,
+            startTime : st_t,
+            endTime : end_t,
+            isWrite : isWrite
+        })
+        friend.access.push({
+            diary_id :diaryId,
+            diary_name : diaryname,
+            startTime : st_t,
+            endTime : end_t,
+            isWrite : isWrite
+        })
+    }
+    diary.save();
+    friend.save();
     res.send("access given");
     // res.send("grnting access ")
 }

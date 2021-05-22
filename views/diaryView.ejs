@@ -21,6 +21,36 @@
         <button type="submit"> <%= idx %></button>
     </form>
     <% })%>
+    <p> People with Access </p>
+
+    <form method="post" action="/followDairy">
+        <input type="hidden" name="diary_id" value="<%=dairy.id%>">
+        <input type="hidden" name="diary_name" value="<%=dairy.name%>">
+        <button type="submit">follow</button>
+    </form>
+
+    <hr>
+    <div>
+        <% dairy.access.forEach((user) => { %>
+        <form action="/getProfile/<%=user.user_id%>" method="get">
+            <button type="submit" ><%= user.user_name %></button>
+        </form>
+        <p> till <span><%=user.endTime %>.</span></p>
+        <p> for read
+            <% if(user.isWrite === true) {%>
+                and Write.
+            <%}%>
+        </p>
+        <%}) %>
+    </div>
+    <% if(dairy.isPrivate === false) {%>
+    <p> Followers : </p>
+        <%dairy.followers.forEach(follower => {%>
+         <form action="/getProfile/<%=follower.user_id%>" method="get">
+            <button type="submit" ><%= follower.name %></button>
+        </form>
+        <% } ) %>
+    <% } %>
 </div>
 
 

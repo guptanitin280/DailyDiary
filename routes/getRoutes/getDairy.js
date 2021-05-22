@@ -19,7 +19,7 @@ const getDairy= async (req, res, dairyModel) => {
 	        	tosend = true;
 	        } else {
 	        	dairy.access.forEach(user_acc => {
-	        		if(user_acc.user_id === req.user.id) {
+	        		if(user_acc.user_id === req.user.id && user_acc.endtime < Date.now()) {
 	        			description : "You have access to this dairy from " + user_acc.start_time.toString() + " till " + user_acc.end_time.toString()
 	        			tosend = true;
 	        		}

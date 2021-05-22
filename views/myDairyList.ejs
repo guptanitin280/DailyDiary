@@ -1,0 +1,65 @@
+<%- include('partials/header'); -%>
+
+
+<form action="/dashboard" method="get">
+    <button type="submit"  >Dashboard</button>
+</form>
+<hr>
+
+
+<div class = "mid-body">
+    <h2> Your Dairies </h2>
+    <hr>
+    <hr>
+    <div>
+        <% myDiaries.forEach((diary) => { %>
+        <form action="/getDiary/<%=diary.diary_id%>" method="get">
+            <button type="submit" ><%= diary.diary_name %></button>
+        </form>
+        <%}) %>
+    </div>
+    <hr>
+    <hr>
+    <h2> you have Access to : </h2>
+
+    <div>
+        <% accessCur.forEach((diary) => { %>
+        <form action="/getDiary/<%=diary.diary_id%>" method="get">
+            <button type="submit" ><%= diary.diary_name %></button>
+        </form>
+        <p> till <span><%=diary.endTime %>.</span></p>
+        <p> for read
+            <% if(diary.isWrite === true) {%>
+                and Write.
+            <%}%>
+        </p>
+        <%}) %>
+    </div>
+    <h2>
+        you had access to :
+    </h2>
+    <div>
+        <% accessPast.forEach((diary) => { %>
+        <form action="/getDiary/<%=diary.diary_id%>" method="get">
+            <button type="submit" ><%= diary.diary_name %></button>
+        </form>
+        <p> till <span><%=diary.endTime %>.</span></p>
+        <p> for read
+            <% if(diary.isWrite === true) {%>
+                and Write.
+            <%}%>
+        </p>
+        <%}) %>
+    </div>
+    <hr>
+    <hr>
+    <p> Followings </p>
+    <% user.following.forEach((diary) => { %>
+    <form action="/getDiary/<%=diary.diary_id%>" method="get">
+        <button type="submit" ><%= diary.diary_name %></button>
+    </form>
+    <%}) %>
+
+</div>
+
+<%- include('partials/footer'); -%>

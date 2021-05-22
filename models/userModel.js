@@ -31,6 +31,7 @@ const userSchema=new mongoose.Schema({
 		}]
 	}],
 	following : [{
+		diary_name : String,
 		diary_id: String
 	}],
 	myDiaries : [{
