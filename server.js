@@ -7,8 +7,10 @@ const session=require('express-session');
 const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
-const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js");
+const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js")
+
 const app = express();
+
 
 app.use(express.static("public"));
 app.set('view engine','ejs');
@@ -46,6 +48,7 @@ passport.deserializeUser((id, done) => {
 	})
 });
 
+
 app.get("/", (req,res) => routesHandler.getHome(req,res) );
 app.get("/dashboard", (req, res) => routesHandler.getDashboard(req,res,userModel, pageModel));
 app.get("/login", (req,res) => routesHandler.getLogin(req,res) );
@@ -68,6 +71,9 @@ app.post("/postAddAFriend",(req,res)=>routesHandler.postAddAFriend(req,res,userM
 app.get("/explore",(req,res)=>routesHandler.getExplore(req,res));
 app.post("/searchUser",(req,res)=>routesHandler.postSearchedUser(req,res,userModel));
 app.get("/messages",(req,res)=>routesHandler.getMessages(req,res));
+app.get("/myDiaries", (req, res) => routesHandler.getMyDairiesList(req,res,));
+app.post("/followDairy", (req,res) => routesHandler.postFollowDairy(req,res, diaryModel, userModel));
+
 app.listen(8000 , () => {
 	console.log("listening to port 8000")
 })

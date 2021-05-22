@@ -1,5 +1,9 @@
 module.exports = (req,res) => {
     // res.render()
+    if(!req.isAuthenticated()) {
+        res.redirect("/");
+        return
+    }
     console.log(req.query)
     const friend = {
         id: req.query.friend_id,

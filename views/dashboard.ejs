@@ -33,7 +33,8 @@
         <div class="card" >
             <div class="card-header">
                 <img src="/images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
-                <span><%= page.author_name %></span>
+
+                <span><a href="/getProfile/<%=page.author_id%>"><%= page.author_name %></a></span>
             </div>
             <div class="card-body">
                 <p><%= page.content%></p>
@@ -60,22 +61,11 @@
     <div class="notice-icon">
         <span><i class="far fa-bell"></i></span>
     </div>
+
     <div>
-        <% user.myDiaries.forEach((diaryId) => { %>
-        <form action="/getDiary/<%=diaryId.diary_id%>" method="get">
-            <button type="submit" ><%= diaryId.diary_name %></button>
+        <form action="/myDiaries" method="get">
+            <button type="submit"> My Dairies </button>
         </form>
-         <%}) %>
-    </div>
-    <div>
-        <p> you have acces to </p>
-        <% user.access.forEach((diary_acc) => { %>
-        <form action="/getDiary/<%=diary_acc.diary_id%>" method="get">
-        <p> for </p>
-            <button type="submit" ><%= diary_acc.diary_name %></button>
-            <p> till <%= diary_acc.endTime %> </p>
-        </form>
-         <%}) %>
     </div>
     <div>
         <form action="/getFriendList" method="get">

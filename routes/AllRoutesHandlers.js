@@ -19,6 +19,8 @@ const getGrantAccess = require(__dirname + "/getRoutes/getGrantAccess.js");
 const postGrantAccess = require(__dirname + "/postRoutes/postGrantAccess.js");
 const getExplore = require(__dirname +"/getRoutes/getExplore.js");
 const postSearchedUser = require(__dirname+"/postRoutes/postSearchUser.js");
+const getMyDairiesList = require(__dirname + "/getRoutes/getMyDairiesList.js");
+const postFollowDairy = require(__dirname + "/postRoutes/postFollowDairy.js");
 const getMessages = require(__dirname+"/getRoutes/getMessages.js");
 
 const handler = {
@@ -43,6 +45,8 @@ const handler = {
     postGrantAccess : postGrantAccess,
     getExplore : getExplore,
     postSearchedUser : postSearchedUser,
+    getMyDairiesList : getMyDairiesList,
+    postFollowDairy: postFollowDairy,
     getMessages : getMessages
 };
 

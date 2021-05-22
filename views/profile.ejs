@@ -9,6 +9,15 @@
             <input hidden value="<%= user.username %>" name="profileName">
             <button type="submit"  >Add As Friend</button>
         </form>
+
+        <div>
+            <p> Dairies : </p>
+            <% user.myDiaries.forEach(diary => {%>
+            <form action="/getDiary/<%=diary.diary_id%>" method="get">
+                <button type="submit" ><%= diary.diary_name %></button>
+            </form>
+            <% })%>
+        </div>
         <form action="/logout" method="post">
             <button type="submit"> logout</button>
         </form>
