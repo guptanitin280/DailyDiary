@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+
+
+    <hr>
+        <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail w-25 " alt="...">
+        <h1> <%= user.username %> </h1>
+        <form action="/postAddAFriend" method="post">
+            <input hidden value="<%= user %>" name="profile">
+            <button type="submit"  >Add As Friend</button>
+        </form>
+        <form action="/logout" method="post">
+            <button type="submit"> logout</button>
+        </form>
+
+
+<%- include('partials/footer'); -%>
