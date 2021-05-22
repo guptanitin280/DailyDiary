@@ -10,9 +10,9 @@
 <div class = "mid-body">
     <p> Granting Access to <%= friend.name %></p>
     <form action="/postGrantAccess" method="post">
-        <input type="hidden" value="<%=friend.id%>">
-        <input type="hidden" value="<%= user.id%>">
-
+        <input type="hidden" value="<%=friend.id%>" name="friend_id">
+        <input type="hidden" value="<%=friend.name%>" name="friend_name">
+        <input type="hidden" value="<%=diary.diary_name%>" name="diary_name">
         <select name="diary_id">
             <% user.myDiaries.forEach(diary => {%>
                 <option value="<%=diary.diary_id%>" > <%=diary.diary_name%></option>

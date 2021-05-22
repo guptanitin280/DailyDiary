@@ -39,6 +39,7 @@ const userSchema=new mongoose.Schema({
 	}],
 	access: [{
 		diary_id : String,
+		diary_name: String,
 		startTime: Date,
 		endTime: Date,
 		isWrite: Boolean

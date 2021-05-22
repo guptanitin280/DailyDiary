@@ -65,7 +65,7 @@ app.get("/getPage/:page_id", (req,res) => routesHandler.getViewPage(req,res,page
 app.post("/likeThisPost", (req,res) => routesHandler.postLikeThisPost(req,res,pageModel));
 app.get("/getFriendList", (req,res) => routesHandler.getFriendList(req,res));
 app.get("/getGrantAccess", (req,res) => routesHandler.getGrantAccess(req,res));
-app.post("/postGrantAccess", (req,res) => routesHandler.postGrantAccess(req,res));
+app.post("/postGrantAccess", (req,res) => routesHandler.postGrantAccess(req,res , userModel,diaryModel));
 app.get("/getProfile/:user_id",(req,res)=>routesHandler.getProfile(req,res,userModel));
 app.post("/postAddAFriend",(req,res)=>routesHandler.postAddAFriend(req,res,userModel));
 

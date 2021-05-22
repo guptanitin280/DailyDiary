@@ -68,6 +68,16 @@
          <%}) %>
     </div>
     <div>
+        <p> you have acces to </p>
+        <% user.access.forEach((diary_acc) => { %>
+        <form action="/getDiary/<%=diary_acc.diary_id%>" method="get">
+        <p> for </p>
+            <button type="submit" ><%= diary_acc.diary_name %></button>
+            <p> till <%= diary_acc.endTime %> </p>
+        </form>
+         <%}) %>
+    </div>
+    <div>
         <form action="/getFriendList" method="get">
             <button type="submit"> My Friends </button>
         </form>

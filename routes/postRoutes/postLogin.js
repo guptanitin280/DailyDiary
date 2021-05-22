@@ -8,6 +8,7 @@ module.exports=function(req,res,userModel,passport) {
             res.render("404");
         } else {
             passport.authenticate("local")(req, res, function () {
+
                 res.redirect("/dashboard");
             });
         }
