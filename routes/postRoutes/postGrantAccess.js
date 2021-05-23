@@ -4,11 +4,11 @@ module.exports = async (req,res, userModel,diaryModel ) => {
         res.redirect("/");
         return
     }
-    console.log(req.body)
+    console.log(req.body);
     const friend_id = req.body.friend_id;
     const diaryId  = req.body.diary_id;
     const friendname  = req.body.friend_name;
-    const isWrite = req.body.is_write;
+    let isWrite = (req.body.is_write==='on');
     const end_t = new Date(req.body.end_time);
     const st_t =  Date.now();
     console.log("en" , end_t, "st " , st_t);
@@ -43,7 +43,7 @@ module.exports = async (req,res, userModel,diaryModel ) => {
         })
         friend.access.push({
             diary_id :diaryId,
-            diary_name : diaryname,
+            diary_name : diary.name,
             startTime : st_t,
             endTime : end_t,
             isWrite : isWrite

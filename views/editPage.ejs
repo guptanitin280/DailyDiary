@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<form action="/dashboard" method="get">
+    <button type="submit" >Dashboard</button>
+</form>
+
+<hr>
+<h3 class="title"> author: <%= authorId %> </h3>
+<h3>owner: <%= ownerId %> </h3>
+<h3><%= diaryId %></h3>
+<h3><%= pageId %></h3>
+<hr>
+
+
+
+<div class="container">
+    <div class="jumbotron centered">
+            <form class="" action="/editPage" method="post">
+            <input hidden value="<%= pageId %>" name="pageId">
+            <label for="Cotent" >Edit page here</label>
+            <textarea name="content" id="Content" class="form-control" rows="10" cols="80"><%= content %></textarea>
+            <br>
+            <button type="submit" class="btn btn-lg btn-success" name="button">Edit</button>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer') %>
