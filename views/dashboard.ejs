@@ -2,71 +2,76 @@
 
 
 <div class = "left-body">
-    <div class="left-navbar">
-        <a href="/dashboard" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Home</a>
-        <a href="/explore" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Explore</a>
-        <a href="/messages" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Massages</a>
-        <a href="/bookmarks" class="btn btn-primary left-navbar-button" role="button" aria-pressed="true">Bookmarks</a>
+    <div class="main-icon">
+        <span><i class="fas fa-book-open"></i></span>
     </div>
-    <hr>
-    <div class="left-profile-div" >
-        <img src="images/profile-pic.jpeg" class="rounded-circle img-thumbnail w-25 " alt="...">
-        <a href="/editProfile"> <%= user.username %> </a>
-            <form action="/logout" method="post">
-                <button type="submit"> logout</button>
-            </form>
+    <div class="left-navbar">
+        <a href="/dashboard" class="button-left-nav" role="button" aria-pressed="true">Home</a>
+        <a href="/explore" class="button-left-nav" role="button" aria-pressed="true">Explore</a>
+        <a href="/messages" class="button-left-nav" role="button" aria-pressed="true">Massages</a>
+        <a href="/bookmarks" class="button-left-nav" role="button" aria-pressed="true">Bookmarks</a>
+    </div>
+    <div class="left-bottom-section">
+        <div class="left-profile-div" >
+            <img src="/images/profile-pic.jpeg" class="prfile-icon" alt="...">
+            <a href="/getProfile/s" class="user-name-pic" > <%= user.username %> </a>
+        </div>
     </div>
 </div>
 
 <div class = "mid-body">
     <div class="top-header">
-        <h1> Home </h1>
-            <img src="images/profile-pic.jpeg" class="prfile-icon" alt="...">
-            <input type="text" placeholder="Dear Diary">
-            <form method="get" action="/compose" >
-                <button type="submit" >Compose </button>
-            </form>
+        <div class="fixed-home-directive">
+            <i class="fas fa-home"></i>
+            <hr class="hr-profile-dash-board">
+        </div>
+        <div class="top-header-write">
+            <img src="/images/profile-pic.jpeg" class="prfile-icon-top" alt="...">
+            <div class="top-composer-text">
+
+                <form method="get" action="/compose" class="top-text-header-par" >
+                    <textarea name="" class="text-top-header" placeholder="Dear Diary..."></textarea>
+                    <button type="submit" class="compose-button-top" >Compose </button>
+                </form>
+            </div>
+        </div>
     </div>
-    <hr>
+    <hr class="hr-profile-dash-board">
+
     <div>
         <% pages.forEach((page) => { %>
-        <div class="card" >
-            <div class="card-header">
-                <img src="/images/profile-pic.jpeg" class="rounded-circle img-thumbnail card-img-icon" alt="...">
-
-                <span><a href="/getProfile/<%=page.author_id%>"><%= page.author_name %></a></span>
+        <div class="card-to-show" >
+            <div class="card-header-show">
+                <img src="/images/profile-pic.jpeg" class="img-thumbnail-card" alt="...">
+                <a href="/getProfile/<%=page.author_id%>"><span class="user-name-card" ><%= page.author_name %></span></a>
             </div>
-            <div class="card-body">
+            <hr class="card-seperator">
+            <div class="card-body-show">
                 <p><%= page.content%></p>
             </div>
-            <div class="card-footer">
+            <hr class="card-seperator">
+            <div class="card-footer-show">
                 <span id="<%= page.id%>">
-                    <button class="like-button"  type="submit"><i class="far fa-heart"></i></button>
-                    <span><sup><%= page.likes %></sup></span>
-                    <button type="submit" ><i class="far fa-comment"></i></button>
+                    <button class="like-button icon-like icon-footer"  type="submit" ><i class="far fa-heart"></i></button>
+                    <span class="icon-footer num-likes"><sup><%= page.likes %></sup></span>
+                    <button type="submit" class="icon-comment icon-footer" > <i class="far fa-comment"></i></button>
 
-                    <button type="submit" class="add-to-bookmark-button"><i class="far fa-bookmark"></i></button>
+                    <button type="submit" class="add-to-bookmark-button icon-bookmark icon-footer"> <i class="far fa-bookmark"></i></button>
                 </span>
             </div>
+            <hr class="card-seperator">
         </div>
         <%})%>
     </div>
 </div>
 <div class = "right-body">
     <div class="notice-icon">
-        <span><i class="far fa-bell"></i></span>
+        <span><i class="far fa-bell icon-footer"></i></span>
     </div>
-
-    <div>
-        <form action="/myDiaries" method="get">
-            <button type="submit"> My Dairies </button>
-        </form>
-    </div>
-    <div>
-        <form action="/getFriendList" method="get">
-            <button type="submit"> My Friends </button>
-        </form>
-    </div>
+    <form action="/logout" method="post">
+        <button type="submit" class="rd-button logout"> logout </button>
+    </form>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
