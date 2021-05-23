@@ -25,11 +25,11 @@
 
 
             <label for="Cotent" >Write next page here</label>
-            <textarea name="content" id="Content" class="form-control" rows="10" cols="80"><%= content %></textarea>
+            <textarea name="content" id="Content" class="form-control" rows="20" cols="40"><%= content %></textarea>
             <br>
             <button type="submit" class="btn btn-lg btn-success" name="button">Write</button>
         </form>
     </div>
 </div>
-\
+<script>tinymce.init({selector:'textarea'});</script>
 <%- include('partials/footer') %>
