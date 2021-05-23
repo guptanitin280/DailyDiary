@@ -4,5 +4,5 @@ module.exports=async function(req,res,userModel,diaryModel,pageModel){
         return
     }
     await require(__dirname +"/../../functions/makeNewDiaryByUser.js")(req.user,req.body.diaryName,req.body.content,userModel,pageModel,diaryModel);
-    res.redirect("/");
+    res.redirect("/dashboard");
 };
