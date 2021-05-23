@@ -78,6 +78,6 @@ app.post("/editPage",(req,res)=>routesHandler.postEditPage(req,res,pageModel,dia
 app.post("/addNewBookMark", (req,res) => routesHandler.postAddNewBookMark(req,res,userModel));
 app.get("/bookmarks", (req,res) => routesHandler.getBookMarks(req,res,userModel));
 
-app.listen(8000 , () => {
-	console.log("listening to port 8000")
+app.listen(3000 , () => {
+	console.log("listening to port 3000")
 })

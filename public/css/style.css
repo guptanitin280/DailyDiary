@@ -359,3 +359,54 @@ body {
 .p-m-but {
     margin: 50px;
 }
+
+.cont-tp {
+    padding-left : 10%;
+}
+.card-tp {
+    display: block;
+}
+.unt-inp {
+    font-size: 1.5rem;
+    margin: 0 0 3% 20%;
+}
+.unt-lbl {
+    display: inline-block;
+    width: 200px;
+}
+.but-tp {
+    display: block;
+    height: 50px;
+    width: 140px;
+    margin: 2% 40%;
+}
+
+.unt-inp:focus {
+    outline-width: 0;
+}
+
+.wel-msg {
+    padding-left: 10%;
+    margin-bottom: 3%;
+    color: #262626;
+}
+.form-in-f {
+    display: inline-block;
+    margin: 5% 5% 5% 5%;
+}
+.wel-msg-2 {
+    /*display: inline-block;*/
+    /*padding-left: 40%;*/
+    margin: 5% auto;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.wel-but {
+    display: block;
+    text-align: center;
+}
+
+.but-wl {
+    height: 50px;
+    width: 140px;
+}
