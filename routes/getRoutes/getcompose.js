@@ -12,7 +12,7 @@ module.exports=async function (req, res, User) {
         res.render("compose", {
             name: req.user.username,
             diaries: diaries,
-            content: req.body.content
+            content: req.query.preContent
         });
     } else {
         res.redirect("/login");
