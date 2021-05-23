@@ -100,7 +100,7 @@ async function generateDb() {
 				diary_id : newDairy.id
 			})
 			await page.save();
-			page_1.push({page_id : page.id});
+			page_1.push({page_id : page.id, created_on : Date.now()});
 		}
 		for(let j=0;j<10;j++) {
 			let page = new pageModel({
@@ -114,7 +114,7 @@ async function generateDb() {
 				diary_id : newDairy2.id
 			})
 			await page.save();
-			page_2.push({page_id : page.id});
+			page_2.push({page_id : page.id, created_on : Date.now()});
 		}
 		await diaryModel.updateOne({name : newDairy.name}, {
 			page_ids : page_1

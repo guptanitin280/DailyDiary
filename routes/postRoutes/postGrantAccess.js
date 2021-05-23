@@ -51,6 +51,7 @@ module.exports = async (req,res, userModel,diaryModel ) => {
     }
     diary.save();
     friend.save();
-    res.send("access given");
+    // res.send("access given");
     // res.send("grnting access ")
+    res.redirect("/getDiary/" + diaryId.toString())
 }

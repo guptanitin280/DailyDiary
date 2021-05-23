@@ -4,7 +4,7 @@ module.exports= function(req,diaryId,content,pageModel,diaryModel) {
         if (err || !diary) {
             console.log("not dry",err);
         } else {
-            console.log(diary);
+            // console.log(diary);
             let newPage = new pageModel({
                 owner_id: diary.owner_id,
                 author_id: req.user.id,
@@ -18,7 +18,7 @@ module.exports= function(req,diaryId,content,pageModel,diaryModel) {
                 if (err) {
                     console.log(err);
                 } else {
-                     diaryModel.updateOne({'_id': diary._id}, {"$push": {page_ids: {page_id:page._id}}},
+                     diaryModel.updateOne({'_id': diary._id}, {"$push": {page_ids: {page_id:page._id, created_on : Date.now()}}},
                         function (err) {
                             if (err)
                                 console.log(err);

@@ -6,7 +6,8 @@ const diarySchema=new mongoose.Schema({
 		required : true
 	},
 	page_ids:[{
-		page_id: String
+		page_id: String,
+		created_on : Date
 	}],
 	name : {
 		type : String,

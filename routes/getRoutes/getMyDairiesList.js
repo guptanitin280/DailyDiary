@@ -5,7 +5,7 @@ module.exports=async function (req, res) {
         const accessPast = [];
 
         for(let i =0;i<req.user.access.length; i++) {
-            if(req.user.access[i].endTime <= Date.now()) {
+            if(req.user.access[i].endTime >= Date.now()) {
                 accessCur.push(req.user.access[i]);
             } else accessPast.push(req.user.access[i]);
         }
