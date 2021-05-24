@@ -50,7 +50,7 @@
                 <p><%= page.content%></p>
             </div>
             <hr class="card-seperator">
-            <div class="card-footer-show">
+            <div class="card-footer-show" id="<%= page.author_name%>">
                 <span id="<%= page.id%>">
                     <button class="like-button icon-like icon-footer"  type="submit" ><i class="far fa-heart"></i></button>
                     <span class="icon-footer num-likes"><sup><%= page.likes %></sup></span>
@@ -79,6 +79,7 @@
 <script >
     $(".like-button").each(function() {
         let id = $(this).parent().attr('id')
+        let chi = $(this).children()
         $(this).on("click" ,() => {
             axios({
                 method: 'post',
@@ -89,6 +90,7 @@
             })
                 .then(function (response) {
                     console.log(response);
+                    chi.attr("class", "fas fa-heart");
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -97,16 +99,20 @@
     })
     $(".add-to-bookmark-button").each(function() {
         let id = $(this).parent().attr('id')
+        let chi = $(this).children()
+        let authorName = $(this).parent().parent().attr('id')
         $(this).on("click" ,() => {
             axios({
                 method: 'post',
                 url: '/addNewBookMark',
                 params: {
                     pageId: id,
+                    authorName : authorName
                 }
             })
                 .then(function (response) {
                     console.log(response);
+                    chi.attr("class", "fas fa-bookmark");
                 })
                 .catch(function (error) {
                     console.log(error);

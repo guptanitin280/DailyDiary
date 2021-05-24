@@ -10,7 +10,9 @@ module.exports= async function(req,res,userModel){
     }, {
         '$push' : {
             'bookmarks' : {
-                'page_id' : req.query.pageId
+                'page_id' : req.query.pageId,
+                'added_at' : Date.now(),
+                'author_name' : req.query.authorName
             }
         }
     })

@@ -20,7 +20,7 @@
         </form>
     </div>
 <% } else { %>
-    <p class="p-d-sta"> Dairies by Ritik Mittal : </p>
+    <p class="p-d-sta"> Dairies by <%= user.username%> </p>
     <div class="p-d-info">
         <% user.myDiaries.forEach(diary => {%>
         <form action="/getDiary/<%=diary.diary_id%>" method="get">

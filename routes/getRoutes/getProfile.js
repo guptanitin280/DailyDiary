@@ -12,7 +12,7 @@ module.exports=async function(req,res,userModel) {
             img1 = await getImageById(req.user.favicon_id);
         } else {
             profileUser = await userModel.findById(profileId).exec();
-            img1 = await getImageById(profileId);
+            img1 = await getImageById(profileUser.favicon_id);
         }
         res.render("profile", {user: profileUser, isSelf : isSelf, image : img1});
     } else {

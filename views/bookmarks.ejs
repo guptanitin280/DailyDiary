@@ -1,20 +1,34 @@
 <%- include('partials/header'); -%>
 
 
-<form action="/dashboard" method="get">
-    <button type="submit"  >Dashboard</button>
+<form action="/dashboard" method="get" >
+    <button type="submit" class="button-a dv-b" >Home</button>
 </form>
-<hr>
-
-
-<div class = "mid-body">
-    <p> Your Bookmarks : </p>
-    <% bookmark.forEach((page_id , idx) => { %>
-        <form method="get" action="/getPage/<%= page_id.page_id%>">
-            <button type="submit"> idx</button>
-        </form>
-    <%})%>
-
+<h1 class="wel-msg"> Your BookMarks : </h1>
+<hr class="hr-profile-dash-board" />
+<div class="dairy-pages-3">
+    <div class="dairy-pages">
+        <table class="dairy-table">
+            <thead class="dt-h">
+            <tr>
+                <th class="dt-i"> Index </th>
+                <th>Written By</th>
+                <th>Added on</th>
+            </tr>
+            </thead>
+            <tbody class="dt-b">
+            <% bookmark.forEach((page ,idx ) => { %>
+            <tr>
+                <td><%= idx + 1%></td>
+                <td><%=page.author_name %></td>
+                <td><a class="dt-b-a" href="/getPage/<%= page.page_id%>"> <%= page.added_at.toString().substring(0, 15) %> </a> </td>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<hr class="p-bottom">
 
 <%- include('partials/footer'); -%>

@@ -27,7 +27,7 @@
                 <% dairy.page_ids.forEach(function(blogId, idx){ %>
                 <tr>
                     <td><%= idx + 1%></td>
-                    <td><a class="dt-b-a" href="/getPage/<%= blogId.page_id%>"> <%= blogId.created_on.toString().substring(0, 15) %> </td>
+                    <td><a class="dt-b-a" href="/getPage/<%= blogId.page_id%>"> <%= blogId.created_on.toString().substring(0, 15) %> </a></td>
                 </tr>
                 <%})%>
                 </tbody>

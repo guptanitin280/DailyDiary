@@ -41,7 +41,9 @@ const userSchema=new mongoose.Schema({
 		arrivalTime: Date
 	}],
 	bookmarks: [ {
-		page_id: String
+		page_id: String,
+		added_at : Date,
+		author_name : String
 	}]
 });
 
