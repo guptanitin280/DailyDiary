@@ -556,3 +556,19 @@ table, td, th {
     font-size: 1rem;
     margin-bottom: 2rem;
 }
+.form-in-f-3 {
+    display: inline-block;
+    margin: 20px auto auto auto;
+}
+.cut-text { 
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+  /*width: 160px;*/
+  height: 200px; 
+  /*white-space: nowrap;*/
+}
+.ds-a-tg {
+    color: black;
+    text-decoration: none;
+    padding : 20px;
+}

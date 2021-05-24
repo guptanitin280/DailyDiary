@@ -4,9 +4,7 @@ const getDiaries= (req, res) => {
         res.redirect("/");
         return
     }
-    res.render("newDiary",{
-        name : req.user.username
-    });
+    res.render("newDiary");
 };
 
 module.exports = getDiaries;

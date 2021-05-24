@@ -46,9 +46,12 @@
                 <a href="/getProfile/<%=page.author_id%>"><span class="user-name-card" ><%= page.author_name %></span></a>
             </div>
             <hr class="card-seperator">
-            <div class="card-body-show">
-                <%= page.content%>
-            </div>
+            <a href="/getPage/<%=page.id%>" class="ds-a-tg">
+                <div class="card-body-show cut-text">
+                    <%- page.content%>
+                </div>
+            </a>
+
             <hr class="card-seperator">
             <div class="card-footer-show" id="<%= page.author_name%>">
                 <span id="<%= page.id%>">
