@@ -9,11 +9,15 @@ module.exports=async function (req, res, User) {
                 })
             }
         }
-        res.render("compose", {
-            user: req.user,
-            diaries: diaries,
-            content: req.query.preContent
-        });
+        if(diaries.length == 0) {
+            res.redirect("/newDiaries");
+        } else {
+            res.render("compose", {
+                user: req.user,
+                diaries: diaries,
+                content: req.query.preContent
+            });
+        }
     } else {
         res.redirect("/login");
     }
