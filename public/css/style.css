@@ -542,3 +542,17 @@ table, td, th {
 .fr-nm2 {
     width: 300px; 
 }
+
+.editor-compose {
+    display: block;
+    text-align: center;
+}
+
+.editor-text {
+    display: inline-block;
+    width: 90%;
+}
+.s-d-c-edi {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}

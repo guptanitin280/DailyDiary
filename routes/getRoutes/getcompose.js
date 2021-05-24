@@ -10,7 +10,7 @@ module.exports=async function (req, res, User) {
             }
         }
         res.render("compose", {
-            name: req.user.username,
+            user: req.user,
             diaries: diaries,
             content: req.query.preContent
         });

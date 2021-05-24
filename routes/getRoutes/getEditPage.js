@@ -16,11 +16,7 @@ module.exports=async function(req,res,pageModel,diaryModel){
             res.render("404");
         }else{
             res.render("editPage",{
-                authorId : page.owner_id,
-                ownerId : page.author_id,
-                diaryId : page.diary_id,
-                pageId : page._id,
-                content : page.content
+                page : page
             });
         }
     }else{
