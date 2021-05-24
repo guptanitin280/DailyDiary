@@ -196,7 +196,7 @@ body {
     width: 80px;
     display: inline-block;
     position: relative;
-    bottom: 80px;
+    bottom: 53px;
     border-radius: 50px;
     border: 4px solid #20bf6b !important;
     border-color: #20bf6b !important;
@@ -555,4 +555,49 @@ table, td, th {
 .s-d-c-edi {
     font-size: 1rem;
     margin-bottom: 2rem;
+}
+.form-in-f-3 {
+    display: inline-block;
+    margin: 20px auto auto auto;
+}
+.cut-text { 
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+  /*width: 160px;*/
+  height: 200px; 
+  /*white-space: nowrap;*/
+}
+.ds-a-tg {
+    color: black;
+    text-decoration: none;
+    padding : 20px;
+}
+.in-ex {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.ser-f-2 {
+    display: inline-block;
+    position: absolute;
+    widows: 50%;
+    right: 10%;
+}
+.hr2-bu {
+    margin-top: 90px;
+}
+.form-in7 {
+    display: inline-block;
+    width: 40%;
+    text-align: left;
+}
+.top-ex-3 {
+    margin-top: 20px;
+}
+.ex-d-s {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.hr-dsi {
+    margin-top: 30px;
 }

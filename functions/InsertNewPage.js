@@ -9,7 +9,7 @@ module.exports= function(req,diaryId,content,pageModel,diaryModel) {
                 owner_id: diary.owner_id,
                 author_id: req.user.id,
                 author_name : req.user.username,
-                isPrivate: true,
+                isPrivate: diary.isPrivate,
                 likes: 0,
                 content: content,
                 diary_id: diary._id

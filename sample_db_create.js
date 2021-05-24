@@ -8,7 +8,7 @@ const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
 const {diaryModel, userModel, pageModel , imageModel} = require(  __dirname + "/models/Allmodels.js")
-const { LoremIpsum } = require("lorem-ipsum");
+const { loremIpsum } = require("lorem-ipsum");
 const fs = require('fs')
 
 const images = []
@@ -29,16 +29,16 @@ const push_images = () => {
 
 // const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
-const lorem = new LoremIpsum({
-	sentencesPerParagraph: {
-		max: 8,
-		min: 4
-	},
-	wordsPerSentence: {
-		max: 16,
-		min: 4
-	}
-});
+// const lorem = new LoremIpsum({
+// 	sentencesPerParagraph: {
+// 		max: 8,
+// 		min: 4
+// 	},
+// 	wordsPerSentence: {
+// 		max: 16,
+// 		min: 4
+// 	}
+// });
 
 mongoose.connect("mongodb://localhost:27017/userDataBase", {
 							useNewUrlParser: true,
@@ -63,6 +63,20 @@ passport.deserializeUser((id, done) => {
 	})
 });
 
+const get_lorem = () => {
+	return loremIpsum({
+  count: 7,                // Number of "words", "sentences", or "paragraphs"
+  format: "html",         // "plain" or "html"
+  paragraphLowerBound: 3,  // Min. number of sentences per paragraph.
+  paragraphUpperBound: 7,  // Max. number of sentences per paragarph.
+  random: Math.random,     // A PRNG function
+  sentenceLowerBound: 5,   // Min. number of words per sentence.
+  sentenceUpperBound: 15,  // Max. number of words per sentence.
+  suffix: "\n",            // Line ending, defaults to "\n" or "\r\n" (win32)
+  units: "paragraphs",      // paragraph(s), "sentence(s)", or "word(s)"
+         // Array of words to draw from
+})
+}
 
 async function generateDb() {
 	
@@ -112,7 +126,7 @@ async function generateDb() {
 			let page = new pageModel({
 				owner_id : newUser.id,
 				author_id : newUser.id,
-				content : lorem.generateParagraphs(7),
+				content : get_lorem(),
 				favicon_id : newUser.favicon_id,
 				author_name : newUser.username,
 				isPrivate : true,
@@ -127,7 +141,7 @@ async function generateDb() {
 			let page = new pageModel({
 				owner_id : newUser.id,
 				author_id : newUser.id,
-				content : lorem.generateParagraphs(7),
+				content : get_lorem(),
 				favicon_id : newUser.favicon_id,
 				author_name : newUser.username,
 				isPrivate : false,
