@@ -161,6 +161,7 @@ async function generateDb() {
 		})
 	}
 	console.log("db created ... ");
+	mongoose.connection.close();
 }
 
 // remove()

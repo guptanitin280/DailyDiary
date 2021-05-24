@@ -21,7 +21,7 @@ module.exports=function(user,diaryName,content,userModel,PageModel,DiaryModel) {
                 if (err) {
                     console.log(err);
                 } else {
-                    DiaryModel.updateOne({'_id': diary._id}, {"$push": {page_ids: {page_id: page._id}}},
+                    DiaryModel.updateOne({'_id': diary._id}, {"$push": {page_ids: {page_id: page._id, created_on: Date.now()}}},
                         function (err) {
                             if (err)
                                 console.log(err);
