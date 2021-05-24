@@ -12,7 +12,7 @@
     <hr>
     <div class="card" >
         <p><%= page.createdAt %></p>
-        <p><%= page.content %></p>
+        <%- page.content %>
         <p><%= page.author_name %></p>
         <% if (page.isPrivate === false) {%>
             <div class="card-footer">
