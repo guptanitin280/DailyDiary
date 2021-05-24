@@ -16,10 +16,7 @@ const diarySchema=new mongoose.Schema({
 	followers : [{
 		user_id : String,
 		name : String,
-		favicon : {
-			data : Buffer,
-			contentType : String
-		}
+		favicon_id : String
 	}],
 	numberOfFollowers: Number,
 	access: [{

@@ -11,6 +11,7 @@ const pageSchema=new mongoose.Schema({
 		required :true
 	},
 	author_name : String,
+	favicon_id : String,
 	diary_id:String,
 	content : String,
 	isPrivate : Boolean,
@@ -23,10 +24,7 @@ const pageSchema=new mongoose.Schema({
 		comment : String,
 		user_id : String,
 		time : Date,
-		favicon : {
-			data : Buffer,
-			contentType : String
-		},
+		favicon_id : String, 
 	}]
 },{
 	timestamps : true

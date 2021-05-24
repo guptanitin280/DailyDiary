@@ -8,22 +8,13 @@ const userSchema=new mongoose.Schema({
 		required : true,
 		unique : true
 	},
-	img : {
-		data : Buffer,
-		contentType : String
-	},
-	favicon : {
-		data : Buffer,
-		contentType : String
-	},
+	img_id : String,
+	favicon_id : String,
 	bio : String,
 	friends : [{
 		friend_id : String,
 		name : String,
-		favicon : {
-			data : Buffer,
-			contentType : String
-		},
+		favicon_id : String,
 		messages : [{
 			message: String,
 			timeOfArrival : Date,

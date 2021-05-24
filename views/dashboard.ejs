@@ -13,7 +13,7 @@
     </div>
     <div class="left-bottom-section">
         <div class="left-profile-div" >
-            <img src="/images/profile-pic.jpeg" class="prfile-icon" alt="...">
+            <img src="data:<%=user.user_image.contentType%>;base64,<%=user.user_image.data%>" class="prfile-icon" alt="...">
             <a href="/getProfile/s" class="user-name-pic" > <%= user.username %> </a>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <hr class="hr-profile-dash-board">
         </div>
         <div class="top-header-write">
-            <img src="/images/profile-pic.jpeg" class="prfile-icon-top" alt="...">
+            <img src="data:<%=user.user_image.contentType%>;base64,<%=user.user_image.data%>" class="prfile-icon-top" alt="...">
             <div class="top-composer-text">
 
                 <form method="get" action="/compose" class="top-text-header-par" >
@@ -42,7 +42,7 @@
         <% pages.forEach((page) => { %>
         <div class="card-to-show" >
             <div class="card-header-show">
-                <img src="/images/profile-pic.jpeg" class="img-thumbnail-card" alt="...">
+                <img src="data:<%=page.user_image.contentType%>;base64,<%=page.user_image.data%>" class="img-thumbnail-card" alt="...">
                 <a href="/getProfile/<%=page.author_id%>"><span class="user-name-card" ><%= page.author_name %></span></a>
             </div>
             <hr class="card-seperator">

@@ -1,4 +1,4 @@
-
+const getImageById = require(__dirname + "/../../functions/getImage.js");
 const getDashboard = async (req, res, userModel, pageModel) =>
 {
 	if(!req.isAuthenticated()) {
@@ -28,8 +28,13 @@ const getDashboard = async (req, res, userModel, pageModel) =>
 	// });
 
 	const pages = await pageModel.find({isPrivate : false}).limit(5).exec();
-
-	res.render("dashboard",{user:req.user,pages: pages });
+	for(let page of pages) {
+		page.user_image = await getImageById(page.favicon_id);
+	}
+	const user = req.user;
+	user.user_image = await getImageById(user.favicon_id);
+	console.log(user.favicon_id);
+	res.render("dashboard",{user:user,pages: pages });
 	// } else {
 	// 	res.redirect("/login");
 	// }

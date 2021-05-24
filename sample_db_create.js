@@ -7,8 +7,26 @@ const session=require('express-session');
 const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
 const {routesHandler } = require( __dirname + "/routes/AllRoutesHandlers.js");
-const {diaryModel, userModel, pageModel } = require(  __dirname + "/models/Allmodels.js")
+const {diaryModel, userModel, pageModel , imageModel} = require(  __dirname + "/models/Allmodels.js")
 const { LoremIpsum } = require("lorem-ipsum");
+const fs = require('fs')
+
+const images = []
+
+const push_images = () => {
+	for(let i=1;i<=6;i++) {
+		fs.readFile("public/images/pic" + i.toString() + ".jpeg" , async (err, data) => {
+			const img = new imageModel({
+			  	contentType : 'image/jpeg',
+			  	data : data
+			  })
+			const im1 = await img.save();
+			images.push(im1._id);
+			console.log(im1.id);
+		})
+	}
+}
+
 // const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
 const lorem = new LoremIpsum({
@@ -29,6 +47,7 @@ mongoose.connect("mongodb://localhost:27017/userDataBase", {
 							.catch( err => console.log(err));
 
 
+
 mongoose.set("useCreateIndex",true);
 
 // const User = new userModel;
@@ -46,6 +65,7 @@ passport.deserializeUser((id, done) => {
 
 
 async function generateDb() {
+	
 	let users = ['Ritik Mittal', 'Nitin Gupta', 'Rishab Nahar' , 'Sobhagya', 'Dipesh', 'Marmik'];
 	let user_ids = []
 	let open_dairy_id = []
@@ -59,8 +79,8 @@ async function generateDb() {
 		}
 		let newUser = new userModel({
 			username : users[i],
-			img : null,
-			favicon : null,
+			img_id : images[i],
+			favicon_id : images[i],
 			bio : "hey it's me " + users[i],
 			notifications : notfi
 		})
@@ -93,6 +113,7 @@ async function generateDb() {
 				owner_id : newUser.id,
 				author_id : newUser.id,
 				content : lorem.generateParagraphs(7),
+				favicon_id : newUser.favicon_id,
 				author_name : newUser.username,
 				isPrivate : true,
 				likes : i + 19,
@@ -107,6 +128,7 @@ async function generateDb() {
 				owner_id : newUser.id,
 				author_id : newUser.id,
 				content : lorem.generateParagraphs(7),
+				favicon_id : newUser.favicon_id,
 				author_name : newUser.username,
 				isPrivate : false,
 				likes : i + 19,
@@ -129,6 +151,7 @@ async function generateDb() {
 			if(user_ids[j] != user_ids[i]){
 				frind.push ({
 					friend_id : user_ids[j],
+					favicon_id : images[j],
 					name : users[j]
 				})
 			}
@@ -137,12 +160,11 @@ async function generateDb() {
 			friends : frind
 		})
 	}
+	console.log("db created ... ");
 }
 
-async function remove() {
-	await userModel.remove({})
-	await diaryModel.remove({})
-	await pageModel.remove({})
-}
 // remove()
-generateDb();
+push_images();
+
+setTimeout(generateDb , 1000)
+

@@ -1,7 +1,7 @@
 <%- include('partials/header'); -%>
 
 
-<img src="/images/profile-pic.jpeg" class="prfile-icon" alt="...">
+<img src="data:<%=image.contentType%>;base64,<%=image.data%>" class="prfile-icon" alt="...">
 <h1 class="gtp-name"> <%= user.username %> </h1>
 <form action="/postAddAFriend" method="post" class="gtp-add-f-but ">
     <input hidden value="<%= user._id %>" name="profileId">
