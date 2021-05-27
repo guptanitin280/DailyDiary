@@ -1,14 +1,30 @@
+const fs = require('fs')
 const imageModel = require(__dirname + "/../../models/imageModel.js")
-module.exports=function(req,res,userModel,passport) {
-    if(!req.files) {
-        res.send("please upload a pic")
-    } else {
-        userModel.find({username: req.body.username}).then(user => {
+
+const getPic = (req) => {
+    const pr =  new Promise((resolve, reject) => {
+        if(!req.files || !req.files.photo) {
+            fs.readFile(__dirname + "/../../public/images/pic4.jpeg" , async (err, data) => {
+                if(err) return reject(err)
+                else {
+                 resolve( new imageModel({
+                    data : data,
+                    contentType : 'image/jpeg'
+                 }) )
+                }
+            })
+        } else {
+            resolve(new imageModel({
+                data : req.files.photo.data,
+                contentType : req.files.photo.mimetype
+            }))
+        } } )
+    return pr;
+}
+module.exports= function(req,res,userModel,passport) {
+        userModel.find({username: req.body.username}).then(async user => {
             if(user.length == 0) {
-                const img_model = new imageModel({
-                    data : req.files.photo.data,
-                    contentType : req.files.photo.mimetype
-                })
+                const img_model = await getPic(req);
                 img_model.save();
                 const newUser = new userModel({
                     username: req.body.username,
@@ -30,5 +46,4 @@ module.exports=function(req,res,userModel,passport) {
                 res.send("alredy registered");
             }
         })
-}
 }
